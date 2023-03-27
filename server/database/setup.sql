@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS UserAccount;
 DROP TABLE IF EXISTS recyclingObjects;
+DROP TABLE IF EXISTS jobs;
 
 CREATE TABLE UserAccount (
   UserAccount_id INT GENERATED ALWAYS AS IDENTITY,
@@ -12,4 +13,9 @@ CREATE TABLE recyclingObjects (
   Item_id INT GENERATED ALWAYS AS IDENTITY,
   ItemName VARCHAR(30) NOT NULL,
   ItemDescription VARChar (255) NOT NULL
+)
+CREATE TABLE jobs(
+  jobs_id INT GENERATED ALWAYS AS IDENTITY,
+  job_title VARCHAR(45),
+  job_description VARCHAR(225)
 )
