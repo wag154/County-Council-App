@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS UserAccount;
+DROP TABLE IF EXISTS recyclingObjects;
+
+CREATE TABLE UserAccount (
+  UserAccount_id INT GENERATED ALWAYS AS IDENTITY,
+  username VARCHAR(30) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+
+)
+
+CREATE TABLE recyclingObjects (
+  Item_id INT GENERATED ALWAYS AS IDENTITY,
+  ItemName VARCHAR(30) NOT NULL,
+  ItemDescription VARChar (255) NOT NULL
+)
