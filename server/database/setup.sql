@@ -8,19 +8,7 @@ CREATE TABLE UserAccount (
   UserAccount_id INT GENERATED ALWAYS AS IDENTITY,
   username VARCHAR(30) NOT NULL,
   password VARCHAR(100) NOT NULL,
-  UserActivity_id INT,
-  PRIMARY KEY UserAccount_id,
-  FOREIGN KEY UserActivity_id REFERENCES UserActivity(Activity_id)
-);
-CREATE TABLE UserActivity (
-  Activity_id INT GENERATED ALWAYS AS IDENTITY,
-  UserAccount_id INT NOT NULL,
-  jobs_id INT,
-  Item_id INT,
-  PRIMARY KEY Activity_id,
-  FOREIGN KEY UserAccount_id REFERENCES UserAccount(UserAccount_id),
-  FOREIGN KEY jobs_id REFERENCES jobs (jobs_id),
-  FOREIGN KEY Item_id REFERENCES recyclingObject(Item_id)
+  PRIMARY KEY (UserAccount_id)
 );
 CREATE TABLE events (
   events_id INT GENERATED ALWAYS AS IDENTITY,
@@ -28,18 +16,28 @@ CREATE TABLE events (
   event_description VARCHAR(255) NOT NULL,
   event_place VARCHAR (50) NOT NULL,
   event_time VARCHAR(30) NOT NULL,
-  PRIMARY KEY events_id
+  PRIMARY KEY (events_id)
 );
 CREATE TABLE recyclingObject (
   Item_id INT GENERATED ALWAYS AS IDENTITY, 
   ItemName VARCHAR(30) NOT NULL,
   ItemDescription VARChar (255) NOT NULL,
-  PRIMARY KEY Item_id
+  PRIMARY KEY (Item_id)
 );
 CREATE TABLE jobs(
   jobs_id INT GENERATED ALWAYS AS IDENTITY,
   job_title VARCHAR(45) NOT NULL,
   job_description VARCHAR(225) NOT NULL,
   job_contactInfo VARCHAR(50) NOT NULL,
-  PRIMARY KEY jobs_id
+  PRIMARY KEY (jobs_id)
+);
+CREATE TABLE UserActivity (
+  Activity_id INT GENERATED ALWAYS AS IDENTITY,
+  UserAccount_id INT NOT NULL,
+  jobs_id INT,
+  Item_id INT,
+  PRIMARY KEY (Activity_id),
+  FOREIGN KEY (UserAccount_id) REFERENCES UserAccount(UserAccount_id),
+  FOREIGN KEY (jobs_id) REFERENCES jobs(jobs_id),
+  FOREIGN KEY (Item_id) REFERENCES recyclingObject(Item_id)
 );
