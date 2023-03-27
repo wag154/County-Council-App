@@ -6,30 +6,37 @@ class Items {
     this.ItemName = ItemName;
     this.ItemDescription = ItemDescription;
   }
-  static async getAllUserId(){
-    
-  }
-  static async index () {
-    try{
-      const all = await db.query("SELECT * FROM recyclingObject WHERE user_id = '';")
-      if(all.rows.length === 0){
+  static async getAll () {
+      const response = await db.query('SELECT * FROM recyclingObject')
+      if(response.rows.length === 0){
         console.log("No current items")
       }
+      return response.rows.map(item => new Items(item))
     }
-    catch{
-      console.log("Cannot get database")
+
+    static async getOneById (id) {
+      const response = await db.query('SELECT * FROM recyclingObject WHERE Item_Id = $1',[id])
+      if(response.rows.length != 1){
+        console.log("No current items")
+      }
+      return new Items(response.rows[0])
     }
-    
-    return all.rows.map(e => Items(e))
+
+  static async create (data) {
+    const {itemName, itemDescription} = data;
+    let response = await db.query('INSERT INTO recyclingObject (ItemName, ItemDescription) VALUES ($1, $2) RETURNING *', [itemName, itemDescription])
   }
-  static async create (name,desc) {
-    try{
-      const add = await db.query("INSERT INTO recyclingObject VALUES ($1,$2) RETURNING *;",[name,desc]);
-      return add.rows[0]
+
+  async update (id, data) {
+    let response = await db.query('UPDATE recyclingObject SET ItemName = $1, ItemDescription = $2 WHERE Item_Id = $3 RETURNING *', [itemName, itemDescription, this.id]);
+    if(response.rows.length!= 1){
+      throw new Error('Cannot update item')
     }
-    catch{
-      console.log("Cannot execute query")
-    }
-  }
+    const updatedItem = response.rows[0];
+    return new Items(updatedItem)
 }
+
+
+}
+
 module.exports = Items;
