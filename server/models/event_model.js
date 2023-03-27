@@ -38,6 +38,12 @@ class Event {
     }
   }
   static async create(name,description,place,time){
+    try{
+      const createNew = await db.query("INSERT INTO event VALUES($1,$2,$3,$4",[name,description,place,time])
+    }
+    catch{}
+  }
+  static async destroy(id){
 
   }
 }

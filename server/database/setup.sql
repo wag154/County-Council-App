@@ -10,7 +10,7 @@ CREATE TABLE UserAccount (
   password VARCHAR(100) NOT NULL,
   UserActivity_id INT,
   PRIMARY KEY UserAccount_id,
-  FOREIGN KEY UserAccount_id REFERENCES UserActivity(UserActivity_id)
+  FOREIGN KEY UserActivity_id REFERENCES UserActivity(Activity_id)
 );
 CREATE TABLE UserActivity (
   Activity_id INT GENERATED ALWAYS AS IDENTITY,
@@ -34,7 +34,6 @@ CREATE TABLE recyclingObject (
   Item_id INT GENERATED ALWAYS AS IDENTITY, 
   ItemName VARCHAR(30) NOT NULL,
   ItemDescription VARChar (255) NOT NULL,
-  UserAccount_id INT,
   PRIMARY KEY Item_id
 );
 CREATE TABLE jobs(
