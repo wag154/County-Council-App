@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS UserAccount;
-DROP TABLE IF EXISTS events;
-DROP TABLE IF EXISTS recyclingObjects;
-DROP TABLE IF EXISTS UserActivity;
-DROP TABLE IF EXISTS jobs;
+DROP TABLE IF EXISTS UserAccount cascade;
+DROP TABLE IF EXISTS events cascade;
+DROP TABLE IF EXISTS recyclingObject cascade;
+DROP TABLE IF EXISTS UserActivity cascade;
+DROP TABLE IF EXISTS jobs cascade;
 
 CREATE TABLE UserAccount (
   UserAccount_id INT GENERATED ALWAYS AS IDENTITY,
