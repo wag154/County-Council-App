@@ -41,4 +41,15 @@ async function update(req, res) {
     }
 }
 
-module.exports = {index, show, create, update};
+async function destroy(req, res) {
+    try {
+        const id = parseInt(req.params.id);
+        const item = await Items.getOneById(id);
+        const result = await item.destroy(id);
+        res.status(204).end()
+    } catch (err) {
+        res.status(404).json({ message: err.message });
+    }
+}
+
+module.exports = {index, show, create, update, destroy}; 

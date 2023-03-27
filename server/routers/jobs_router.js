@@ -1,13 +1,12 @@
 const {Router} = require ("express");
-const event_controller = require ("../controllers/jobs_controller");
+const jobs_controller = require ("../controllers/jobs_controller");
 
 const jobRouter = Router();
 
-//create job 
-
-//all current jobs
-
-// remove job
-
+jobRouter.get("/", jobs_controller.index);
+jobRouter.get("/:id", jobs_controller.show);
+jobRouter.post("/", jobs_controller.create);
+jobRouter.patch("/:id", jobs_controller.update);
+jobRouter.delete("/:id", jobs_controller.destroy);
 
 module.exports = jobRouter;

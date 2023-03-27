@@ -10,7 +10,25 @@ const index = async(req,res) =>{
     res.status(204);
   }
 }
+
+const create = async(req,res) =>{
+  try{
+    const getCreate = await Event.create(req.body.username,red.body.password);
+    res.send("Created a new account")
+  }
+  catch{(console.log("Unable to create account"))}
+}
+
+const remove = async(req,res)=>{
+  try{
+    const getRemove = await Event.destroy()
+  }
+  catch{
+    console.log()
+  }
+}
 module.exports = {
-  getAll,
+  index,
+  create
 
 }

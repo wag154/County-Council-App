@@ -27,7 +27,7 @@ CREATE TABLE events (
   event_name VARCHAR(30) NOT NULL,
   event_description VARCHAR(255) NOT NULL,
   event_place VARCHAR (50) NOT NULL,
-  event_time DATE NOT NULL,
+  event_time VARCHAR(30) NOT NULL,
   PRIMARY KEY events_id
 );
 CREATE TABLE recyclingObject (

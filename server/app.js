@@ -10,15 +10,13 @@ const itemRouter = require("./routers/item_routers");
 const jobRouter  = require ("./routers/jobs_router");
 const eventRouter = require ("./routers/event_router"); 
 
-
 app.get('/', (req, res) => {
     res.send('Welcome to our API!')
 })
 
 app.use("/user", userRouter);
-app.use("/item", itemRouter);
+app.use("/items", itemRouter);
 app.use("/jobs", jobRouter);
-app.use("/event", eventRouter);
-
+app.use("/events", eventRouter);
 
 module.exports = app;

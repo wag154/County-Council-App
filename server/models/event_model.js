@@ -8,6 +8,14 @@ class Event {
     this.event_place = event_place;
     this.event_time = event_time;
   }
+  static async getElementById (name){
+  try{
+    const ID = await db.query("SELECT event_id FROM Event WHERE event_title = $1",[name])
+  }
+  catch{
+    console.log("Unable to get Event name by ID")
+  }
+  }
   static async index (){
     try{
       const All = await db.query("SELECT * FROM events;")
@@ -19,6 +27,18 @@ class Event {
     catch{
       console.log("Failed to return all from events table")
     }
+  }
+  static async GetEventID (name){
+    try {
+      const getID = await db.query("SELECT Event_id FROM Event WHERE Event_id = $1", [name])
+      return getID.rows[0];
+    }
+    catch{
+      console.log("Unable to return")
+    }
+  }
+  static async create(name,description,place,time){
+
   }
 }
 
