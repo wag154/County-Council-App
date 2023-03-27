@@ -19,13 +19,21 @@ CREATE TABLE UserActivity (
   FOREIGN KEY UserAccount_id REFERENCES UserAccount(UserAccount_id),
   FOREIGN KEY jobs_id REFERENCES jobs (jobs_id)
 );
-CREATE TABLE recyclingObjects (
+CREATE TABLE events (
+  events_id INT GENERATED ALWAYS AS IDENTITY,
+  event_name VARCHAR(30) NOT NULL,
+  event_description VARCHAR(255) NOT NULL,
+  event_place VARCHAR (50) NOT NULL,
+  event_time DATE NOT NULL,
+  PRIMARY KEY events_id
+);
+
+CREATE TABLE recyclingObject (
   Item_id INT GENERATED ALWAYS AS IDENTITY, 
   ItemName VARCHAR(30) NOT NULL,
   ItemDescription VARChar (255) NOT NULL,
   UserAccount_id INT,
-  PRIMARY KEY Item_id,
-  FOREIGN KEY Item_id REFERENCES UserAccount(UserAccount_id)
+  PRIMARY KEY Item_id
 );
 CREATE TABLE jobs(
   jobs_id INT GENERATED ALWAYS AS IDENTITY,
