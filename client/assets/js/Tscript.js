@@ -121,6 +121,8 @@ const register = async(username,password)=>{
         const resp = await fetch ("/user/register",options);
         if (resp.ok){
             const data = resp.json();
+            localStorage.setItem("username",data.username);
+            return
         }
     }catch{
         console.log("Unable to register")
