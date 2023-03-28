@@ -23,6 +23,7 @@ async function create(req, res) {
 	try {
 		const data = req.body;
 		const newItem = await Items.create(data);
+		console.log(newItem);
 		res.status(201).json(newItem);
 	} catch (err) {
 		res.status(400).json({ message: err.message });

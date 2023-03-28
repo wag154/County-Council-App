@@ -20,7 +20,7 @@ class Items {
 			[id]
 		);
 		if (response.rows.length != 1) {
-			console.log('No current items');
+			throw new Error('No current items');
 		}
 		return new Items(response.rows[0]);
 	}
@@ -31,7 +31,9 @@ class Items {
 			'INSERT INTO recyclingObject (itemName, itemDescription) VALUES ($1, $2) RETURNING *;',
 			[name, description]
 		);
+		console.log(response.rows[0]);
 		const newItem = response.rows[0];
+		console.log(newItem);
 		return new Items(newItem);
 	}
 

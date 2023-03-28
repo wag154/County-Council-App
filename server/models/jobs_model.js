@@ -3,9 +3,9 @@ const db = require('../database/connect');
 class Jobs {
 	constructor({ jobs_id, job_title, job_description, job_contactInfo }) {
 		this.id = jobs_id;
-		this.job_title = job_title;
-		this.job_description = job_description;
-		this.job_contactInfo = job_contactInfo;
+		this.title = job_title;
+		this.description = job_description;
+		this.contactInfo = job_contactInfo;
 	}
 	static async getAll() {
 		const response = await db.query('SELECT * FROM jobs;');
@@ -26,10 +26,10 @@ class Jobs {
 	}
 
 	static async create(data) {
-		const { job_title, job_description, job_contactInfo } = data;
+		const { title, description, contactInfo } = data;
 		let response = await db.query(
 			'INSERT INTO jobs (job_title, job_description, job_contactInfo) VALUES ($1, $2, $3) RETURNING *;',
-			[job_title, job_description, job_contactInfo]
+			[title, description, contactInfo]
 		);
 		const newJob = response.rows[0];
 		return new Jobs(newJob);
