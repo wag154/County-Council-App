@@ -12,7 +12,6 @@ class Items {
 			console.log('No current items');
 		}
 		const mapped = response.rows.map((item) => new Items(item));
-		console.log('mapped :', mapped);
 		return mapped;
 	}
 
@@ -35,7 +34,6 @@ class Items {
 				[name, description]
 			);
 			const newItem = response.rows[0];
-			console.log('model', newItem);
 			return new Items(response.rows[0]);
 		} catch (error) {
 			throw new Error('Cannot create item');

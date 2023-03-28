@@ -13,3 +13,10 @@ describe('/homepage', () => {
 		expect(response.text).toBe('Welcome to our API!');
 	});
 });
+
+describe('PORT', () => {
+	it('should return a port number', () => {
+		const port = process.env.PORT;
+		expect(port).not.toBe(undefined);
+	});
+});

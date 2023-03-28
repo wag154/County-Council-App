@@ -13,11 +13,21 @@ describe('/items', () => {
 		expect(response.body.length).not.toBe(1);
 	});
 
-	// it('should return an array of data when called for a single job', async () => {
-	// 	const response = await request(app).get('/jobs/2');
-	// 	expect(response.statusCode).toBe(200);
-	// 	expect(response.body).not.toBe(null);
-	// });
+	it('Should return an error if user mis-spells URL', async () => {
+		const response = await request(app).get('/iteems');
+		expect(response.statusCode).toBe(404);
+	});
+
+	it('should return an array of data when called for a single job', async () => {
+		const response = await request(app).get('/jobs/5');
+		expect(response.statusCode).toBe(200);
+		expect(response.body).not.toBe(null);
+	});
+
+	it('should return an error if enters incorrect path', async () => {
+		const response = await request(app).get('/items/100000000000000');
+		expect(response.statusCode).toBe(404);
+	});
 
 	it('should return with status 201 when new job is added', async () => {
 		const requestBody = {
