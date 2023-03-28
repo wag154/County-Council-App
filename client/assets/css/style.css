@@ -1,5 +1,15 @@
+/* index.html CSS */
 .banner-section-img {
     width: 100%;
     aspect-ratio: 3/0.8;
     object-fit:cover;
+}
+
+
+/* events.html CSS */
+.overlay-mask {
+    background-color: black;
+    opacity: 100%;
+    width: 100%;
+    height: 100%;
 }

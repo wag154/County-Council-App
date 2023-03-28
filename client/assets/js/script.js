@@ -1,6 +1,8 @@
 
 const btnEvents = document.getElementById("btn-events")
 btnEvents.addEventListener('click', () => {
+    getEventList()
+
     window.location.href = "./assets/views/events.html"
 })
 
@@ -15,11 +17,14 @@ btnJob.addEventListener('click', () => {
 })
 async function getEventList() {
 
-    const res = await fetch("")
-    const data = await res.json()
-    return data.result()
+    // const res = await fetch("")
+    // const data = await res.json()
+    // return data.result()
 
+    // const eventTitle = document.getElementById("event-title")
+    // eventTitle.innerHTML = "Join new football team"
+    console.log("event list")
+    document.getElementById("event-title").eventTitle.innerHTML = "Join new football team"
+   
 }
 
-const eventTitle = document.getElementById("event-title")
-eventTitle.innerText = "Join new football team"
