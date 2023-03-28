@@ -10,7 +10,6 @@ let login = false;
 let currentDotMenuIndex = 0;
 
 const DisplayJobs = async(data)=>{
-
     try{
         data.forEach(e=>{
            const jobContainer = document.createElement("div") 
@@ -49,15 +48,31 @@ const getAllCurrentJobs = async() =>{
         console.log("Unable to get all current jobs")
     }
 }
+const makeToken = async() =>{
+    if (localStorage.getItem("username") != null)
+        options = {
+            headers:{
+                "authorization": "MKTK"
+            },
+            body:json.stringify({
+                Username:username
+            })
+        }
+    const resp = await fetch ("/CreateToken",options);
+    if (resp.ok){
+        const data = resp.json();
+        localStorage.setItem("token",data);
+    }
+}
 const getInfo = (e) =>{
     e.preventDefault();
     if (login == true){
         userLogin(e.target.Username.value,e.target.Password.value);
-        localStorage = ("username",e.target.Username.value);
+        localStorage.setItem("username",e.target.Username.value);
     }
     else {
         register(e.target.Username.value,e.target.Password.value);
-        localStorage = ("username",e.target.Password.value);
+        localStorage.setItem("username",e.target.Password.value);
     }
 
     e.target.Username.value = '';

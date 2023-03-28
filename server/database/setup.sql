@@ -10,6 +10,13 @@ CREATE TABLE UserAccount (
   password VARCHAR(100) NOT NULL,
   PRIMARY KEY (UserAccount_id)
 );
+CREATE TABLE token (
+  token_id INT GENERATED ALWAYS AS IDENTITY,
+  user_id INT NOT NULL,
+  Token CHAR(36) UNIQUE NOT NULL,
+  PRIMARY KEY (token_id),
+  FOREIGN KEY (user_id) REFERENCES UserAccount(UserAccount_id)
+);
 CREATE TABLE events (
   events_id INT GENERATED ALWAYS AS IDENTITY,
   event_name VARCHAR(30) NOT NULL,

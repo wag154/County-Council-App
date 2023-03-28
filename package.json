@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev" :"nodemon index.js",
+    "dev": "nodemon index.js",
     "setup-db": "node ./database/setup",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,5 +17,8 @@
     "nodemon": "^2.0.22",
     "pg": "^8.10.0",
     "uuidv4": "^6.2.13"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0"
   }
 }
