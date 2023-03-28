@@ -1,7 +1,7 @@
 /* index.html CSS */
 .banner-section-img {
     width: 100%;
-    aspect-ratio: 3/0.8;
+    aspect-ratio: 3/0.5;
     object-fit:cover;
 }
 
