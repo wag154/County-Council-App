@@ -22,6 +22,7 @@ async function show(req, res) {
 async function create(req, res) {
 	try {
 		const data = req.body;
+		console.log(data);
 		const newItem = await Items.create(data);
 		console.log(newItem);
 		res.status(201).json(newItem);
@@ -35,7 +36,7 @@ async function update(req, res) {
 		const id = parseInt(req.params.id);
 		const itemId = await Items.getOneById(id);
 		const newItem = req.body;
-		const result = await Items.update(newItem);
+		const result = await itemId.update(newItem);
 		res.status(200).json(result);
 	} catch (err) {
 		res.status(400).json({ message: err.message });

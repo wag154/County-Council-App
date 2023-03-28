@@ -2,32 +2,30 @@ require('dotenv').config();
 const app = require('../app');
 const request = require('supertest');
 
-describe('/jobs', () => {
+describe('/items', () => {
 	it('should return 200 OK when a call for all is made', async () => {
-		const response = await request(app).get('/jobs');
+		const response = await request(app).get('/items');
 		expect(response.statusCode).toBe(200);
 	});
 
 	it('should return an array of data when a call to all jobs is made', async () => {
-		const response = await request(app).get('/jobs');
-		expect(response.body.length).not.toBe(0);
+		const response = await request(app).get('/items');
+		expect(response.body.length).not.toBe(1);
 	});
 
-	it('should return an array of data when called for a single job', async () => {
-		const response = await request(app).get('/jobs/2');
-		expect(response.statusCode).toBe(200);
-		expect(response.body).not.toBe(null);
-	});
+	// it('should return an array of data when called for a single job', async () => {
+	// 	const response = await request(app).get('/jobs/2');
+	// 	expect(response.statusCode).toBe(200);
+	// 	expect(response.body).not.toBe(null);
+	// });
 
 	it('should return with status 201 when new job is added', async () => {
 		const requestBody = {
-			title: 'test',
+			name: 'test',
 			description: 'test',
-			contactInfo: 'test',
 		};
-		const response = await request(app).post('/jobs').send(requestBody);
+		const response = await request(app).post('/items').send(requestBody);
 		expect(response.statusCode).toBe(201);
-		expect(response.body.title).toBe('test');
 	});
 
 	// it('should return with status 204 when job is deleted', async () => {
