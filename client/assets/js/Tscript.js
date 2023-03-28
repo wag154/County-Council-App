@@ -1,14 +1,14 @@
-const { stringify } = require("querystring");
-
 const btnEvents = document.getElementById("btn-events");
 const btnRecycle = document.getElementById("btn-recycle");
 const btnJob = document.getElementById("btn-job");
 const eventTitle = document.getElementById("event-title");
 const EventDesc = document.querySelector("#event-title p");
 const signUpForm  = document.querySelector(".centreDis form");
+const recyclingParent = document.querySelector("#displayTest")
 
 let login = false;
 let currentDotMenuIndex = 0;
+
 
 const getInfo = (e) =>{
     e.preventDefault();
@@ -24,7 +24,7 @@ const getInfo = (e) =>{
 }
 const userSwitch = async() =>{
 
-    const title = document.querySelector(".CentreDis h1")
+    const title = document.querySelector("#RegHeader")
     const button = document.querySelector("#SignupSwitcher")
 
     if (login == false){
@@ -35,7 +35,7 @@ const userSwitch = async() =>{
     else{
         title.textContent = "Login";
         button.textContent = "Sign Up";
-        login = true;
+        login = false;
     }
 }
 const register = async(username,password)=>{
@@ -49,6 +49,14 @@ const register = async(username,password)=>{
             Password : password
         })
         
+    }
+    try{
+        const resp = await fetch ("",options);
+        if (resp.ok){
+            const data = resp.json();
+        }
+    }catch{
+        console.log("Unable to register")
     }
 }
 
@@ -75,19 +83,6 @@ const userLogin = async(username,password) =>{
     }
 }
 
-const getEvents = async()=>{
-    try{
-       const resp = await fetch("/events/")
-       if (resp.ok){
-        const data = await resp.json();
-        //function here
-       }
-    }
-    catch {
-        console.log("unable to get events")
-        alert("Unable to get events")
-    }
-}
 
 const displayEvents = async(data)=>{
     let EventName = [];
@@ -107,6 +102,19 @@ const displayEvents = async(data)=>{
     }
     eventTitle.textContent = EventName[currentDotMenuIndex];
     EventDesc.innerHTML = `${EventDescription[currentDotMenuIndex]} <br> Time :${eventTime[currentDotMenuIndex]} <br> Place: ${eventPlace[currentDotMenuIndex]}` ;
+}
+const getEvents = async()=>{
+    try{
+       const resp = await fetch("/events/")
+       if (resp.ok){
+        const data = await resp.json();
+        displayEvents(data)
+       }
+    }
+    catch {
+        console.log("unable to get events")
+        alert("Unable to get events")
+    }
 }
 
 async function getEventList(){
