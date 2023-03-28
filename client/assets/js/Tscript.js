@@ -59,7 +59,6 @@ const register = async(username,password)=>{
         console.log("Unable to register")
     }
 }
-
 const userLogin = async(username,password) =>{
     options ={
         method: "GET",
@@ -82,8 +81,6 @@ const userLogin = async(username,password) =>{
         console.log("Unable to login")
     }
 }
-
-
 const displayEvents = async(data)=>{
     let EventName = [];
     let EventDescription = [];
