@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD:server/package.json
+    "dev" :"nodemon index.js",
+    "setup-db": "node ./database/setup",
+=======
     "dev" : "nodemon ./server/index.js",
     "setup-db": "node ./server/database/setup.js",
+>>>>>>> 0654846b8bbca644c91feb6423a1edc43a2917b2:package.json
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
