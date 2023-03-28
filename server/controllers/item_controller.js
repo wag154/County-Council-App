@@ -34,7 +34,7 @@ async function update(req, res) {
 		const id = parseInt(req.params.id);
 		const itemId = await Items.getOneById(id);
 		const newItem = req.body;
-		const result = await Items.update(data);
+		const result = await Items.update(newItem);
 		res.status(200).json(result);
 	} catch (err) {
 		res.status(400).json({ message: err.message });

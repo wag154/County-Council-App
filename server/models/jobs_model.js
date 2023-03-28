@@ -1,7 +1,7 @@
 const db = require('../database/connect');
 
 class Jobs {
-	constructor(jobs_id, job_title, job_description, job_contactInfo) {
+	constructor({ jobs_id, job_title, job_description, job_contactInfo }) {
 		this.id = jobs_id;
 		this.job_title = job_title;
 		this.job_description = job_description;
