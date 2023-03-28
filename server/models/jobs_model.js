@@ -38,7 +38,7 @@ class Jobs {
 	async update(data) {
 		let response = await db.query(
 			'UPDATE jobs SET job_title = $1, job_description = $2, job_contactInfo = $3 WHERE jobs_id = $4 RETURNING *;',
-			[job_title, this.job_description, this.job_description, this.id]
+			[data.title, data.description, data.contactInfo, this.id]
 		);
 		if (response.rows.length != 1) {
 			throw new Error('Cannot update job');

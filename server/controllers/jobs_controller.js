@@ -34,10 +34,10 @@ async function update(req, res) {
 		const id = parseInt(req.params.id);
 		const jobId = await Jobs.getOneById(id);
 		const newJob = req.body;
-		const result = await Jobs.update(data);
-		res.status(200).json(result);
+		const result = await jobId.update(newJob);
+		res.status(201).json(result);
 	} catch (err) {
-		res.status(400).json({ message: err.message });
+		res.status(404).json({ message: err.message });
 	}
 }
 
