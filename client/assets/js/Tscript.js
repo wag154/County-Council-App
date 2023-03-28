@@ -9,16 +9,57 @@ const recyclingParent = document.querySelector("#displayTest")
 let login = false;
 let currentDotMenuIndex = 0;
 
+const DisplayJobs = async(data)=>{
 
+    try{
+        data.forEach(e=>{
+           const jobContainer = document.createElement("div") 
+           const JobHeader = document.createElement("h1");
+           const jobDescription = document.createElement("p1");
+           const applyBtn = document.createElement("button")
+/*
+            jobConatiner.style = "style";
+            JobHeader.style = "style";
+            jobDescription.style = "style";
+            applyBtn.style = "style"
+*/
+           jobDescription.innerHTML = `${e[job_pay]}<br>${e.job_description}<br>${e.job_contactInfo}`;
+           jobContainer.appendChild(JobHeader);
+           jobContainer.appendChild(jobDescription);
+           jobContainer.appendChild(applyBtn);
+           //add parent container here by ID
+           //$("ParentIDHere").appendChild(jobContainer)
+        })
+    }
+    catch {
+        throw "unable to display jobs"
+    }
+
+}
+
+const getAllCurrentJobs = async() =>{
+    try{
+        const resp = fetch ("/jobs/")
+        if (resp.ok){
+            const data = resp.JSON();
+            //func here
+        }
+    }
+    catch {
+        console.log("Unable to get all current jobs")
+    }
+}
 const getInfo = (e) =>{
     e.preventDefault();
-
     if (login == true){
         userLogin(e.target.Username.value,e.target.Password.value);
+        localStorage = ("username",e.target.Username.value);
     }
     else {
         register(e.target.Username.value,e.target.Password.value);
+        localStorage = ("username",e.target.Password.value);
     }
+
     e.target.Username.value = '';
     e.target.Password.value = '';
 }
@@ -126,6 +167,7 @@ async function getEventList(){
 }
 
 signUpForm.addEventListener("submit",getInfo)
+
 btnEvents.addEventListener('click', () => {
 window.location.href = "./assets/views/events.html"
 })
