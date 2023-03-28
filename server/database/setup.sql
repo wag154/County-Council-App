@@ -19,10 +19,11 @@ CREATE TABLE events (
   PRIMARY KEY (events_id)
 );
 CREATE TABLE recyclingObject (
-  item_id INT GENERATED ALWAYS AS IDENTITY, 
-  itemName VARCHAR(30) NOT NULL,
-  itemDescription VARCHAR (255) NOT NULL,
-  PRIMARY KEY (item_id)
+  Item_id INT GENERATED ALWAYS AS IDENTITY, 
+  ItemName VARCHAR(30) NOT NULL,
+  itemCategory VARCHAR(30) NOT NULL,
+  ItemDescription VARChar (255) NOT NULL,
+  PRIMARY KEY (Item_id)
 );
 CREATE TABLE jobs(
   jobs_id INT GENERATED ALWAYS AS IDENTITY,
