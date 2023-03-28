@@ -18,13 +18,13 @@ async function userLogin(req, res) {
 		res.status(400);
 	}
 }
-
 async function remove(req, res) {
 	try {
 		const getID = await User.getUserByID(req.body.name);
 		const deleted = await User.destroy(getID);
 		res.send(200);
 	} catch {
+		res.status (402)
 		console.log('Unable to remove element');
 	}
 }
