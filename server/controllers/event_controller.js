@@ -22,13 +22,15 @@ const create = async(req,res) =>{
 const remove = async(req,res)=>{
   try{
     const getRemove = await Event.destroy()
+    res.status(200)
   }
   catch{
-    console.log()
+    res.status(404)
   }
 }
 module.exports = {
   index,
-  create
+  create,
+  remove
 
 }

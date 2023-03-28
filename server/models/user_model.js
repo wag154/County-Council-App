@@ -15,7 +15,6 @@ class User {
       console.log("Unable to find id")
     }
   }
-  
   static async check (name,password){
     try{
       const UsernameCheck = db.query("SELECT * FROM UserAccount WHERE username = '$1' AND password = '$2'",[name,password]);
@@ -30,7 +29,6 @@ class User {
       console.log("Unable to check")
     }
   }
-
   static async create (name,password){
     const isNewAccount = check(name,password);
     if (isNewAccount == true){
@@ -59,7 +57,6 @@ class User {
   async destroy (id){
     try{
       const get = await db.query("DELETE FROM UserAccount WHERE UserAccount_id = $1 RETURNING *;",[id])
-
     }
     catch {
       console.log("Unable to delete")

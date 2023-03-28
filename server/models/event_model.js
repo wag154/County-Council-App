@@ -14,8 +14,7 @@ class Event {
   }
   catch{
     console.log("Unable to get Event name by ID")
-  }
-  }
+  }}
   static async index (){
     try{
       const All = await db.query("SELECT * FROM events;")
@@ -41,10 +40,12 @@ class Event {
     try{
       const createNew = await db.query("INSERT INTO event VALUES($1,$2,$3,$4",[name,description,place,time])
     }
-    catch{}
+    catch{
+     console.log("Unable to create new event") 
+    }
   }
   static async destroy(id){
-
+    const remove = db.query ("DELETE FROM events WHERE event_id = $1",[id])
   }
 }
 
