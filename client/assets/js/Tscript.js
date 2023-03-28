@@ -141,7 +141,7 @@ const userLogin = async(username,password) =>{
         const resp = fetch("/user/login",options)
         if (resp.ok){
             const data = resp.json();
-            //function here
+            localStorage.setItem("username",data.username)
         }
     }
     catch {
