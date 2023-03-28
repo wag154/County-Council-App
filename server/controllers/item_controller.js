@@ -3,6 +3,7 @@ const Items = require('../models/item_model');
 async function index(req, res) {
 	try {
 		const items = await Items.getAll();
+		console.log(items);
 		res.status(200).json(items);
 	} catch (err) {
 		res.status(500).json({ message: err.message });
@@ -24,10 +25,10 @@ async function create(req, res) {
 		const data = req.body;
 		console.log(data);
 		const newItem = await Items.create(data);
-		console.log(newItem);
-		res.status(201).json(newItem);
+		console.log('controller', newItem);
+		res.status(201).send(newItem);
 	} catch (err) {
-		res.status(400).json({ message: err.message });
+		console.log('enters here', res.status(400).json({ message: err.message }));
 	}
 }
 

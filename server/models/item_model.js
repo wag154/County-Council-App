@@ -1,17 +1,19 @@
 const db = require('../database/connect');
 
 class Items {
-	constructor({ item_Id, itemName, itemDescription }) {
-		this.id = item_Id;
-		this.name = itemName;
-		this.description = itemDescription;
+	constructor({ item_id, itemname, itemdescription }) {
+		this.id = item_id;
+		this.name = itemname;
+		this.description = itemdescription;
 	}
 	static async getAll() {
 		const response = await db.query('SELECT * FROM recyclingObject;');
 		if (response.rows.length === 0) {
 			console.log('No current items');
 		}
-		return response.rows.map((item) => new Items(item));
+		const mapped = response.rows.map((item) => new Items(item));
+		console.log('mapped :', mapped);
+		return mapped;
 	}
 
 	static async getOneById(id) {
@@ -27,13 +29,17 @@ class Items {
 
 	static async create(data) {
 		const { name, description } = data;
-		let response = await db.query(
-			'INSERT INTO recyclingObject (itemName, itemDescription) VALUES ($1, $2) RETURNING *;',
-			[name, description]
-		);
-		const newItem = response.rows[0];
-		console.log(newItem);
-		return new Items(newItem);
+		try {
+			let response = await db.query(
+				'INSERT INTO recyclingObject (itemName, itemDescription) VALUES ($1, $2) RETURNING *;',
+				[name, description]
+			);
+			const newItem = response.rows[0];
+			console.log('model', newItem);
+			return new Items(response.rows[0]);
+		} catch (error) {
+			throw new Error('Cannot create item');
+		}
 	}
 
 	async update(data) {

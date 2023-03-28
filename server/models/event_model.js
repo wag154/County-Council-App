@@ -42,10 +42,10 @@ class Event {
 	}
 
 	async update(data) {
-		const { event_name, event_description, event_place, event_time } = data;
+		const { name, description, place, time } = data;
 		let response = await db.query(
 			'UPDATE events SET event_name = $1, event_description = $2, event_place = $3, event_time = $4 WHERE events_id = $5 RETURNING *;',
-			[event_name, event_description, event_place, event_time, this.id]
+			[name, description, place, time, this.id]
 		);
 		if (response.rows.length != 1) {
 			throw new Error('Cannot update event');

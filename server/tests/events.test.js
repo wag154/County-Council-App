@@ -14,7 +14,7 @@ describe('/events', () => {
 	});
 
 	it('should return an array of data when called for a single job', async () => {
-		const response = await request(app).get('/events/4');
+		const response = await request(app).get('/events/2');
 		expect(response.statusCode).toBe(200);
 		expect(response.body).not.toBe(null);
 	});
@@ -28,13 +28,13 @@ describe('/events', () => {
 		};
 		const response = await request(app).post('/events').send(requestBody);
 		expect(response.statusCode).toBe(201);
-		// expect(response.body.title).toBe('test');
+		expect(response.body.name).toBe('test');
 	});
 
-	// it('should return with status 204 when job is deleted', async () => {
-	// 	const response = await request(app).delete('/jobs/1');
-	// 	expect(response.statusCode).toBe(204);
-	// });
+	it('should return with status 204 when job is deleted', async () => {
+		const response = await request(app).delete('/jobs/1');
+		expect(response.statusCode).toBe(204);
+	});
 	// it('should return with status 200 when job is updated', async (data) => {
 	// 	const requestBody = {
 	// 		name: 'test',

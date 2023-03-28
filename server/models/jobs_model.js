@@ -36,13 +36,15 @@ class Jobs {
 	}
 
 	async update(data) {
+		const { title, description, contactInfo } = data;
 		let response = await db.query(
 			'UPDATE jobs SET job_title = $1, job_description = $2, job_contactInfo = $3 WHERE jobs_id = $4 RETURNING *;',
-			[data.title, data.description, data.contactInfo, this.id]
+			[title, description, contactInfo, this.id]
 		);
 		if (response.rows.length != 1) {
 			throw new Error('Cannot update job');
 		}
+		console.log(response.rows);
 		const updatedJob = response.rows[0];
 		return new Jobs(updatedJob);
 	}

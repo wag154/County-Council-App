@@ -35,7 +35,7 @@ async function update(req, res) {
 		const jobId = await Jobs.getOneById(id);
 		const newJob = req.body;
 		const result = await jobId.update(newJob);
-		res.status(201).json(result);
+		res.status(200).json(result);
 	} catch (err) {
 		res.status(404).json({ message: err.message });
 	}
