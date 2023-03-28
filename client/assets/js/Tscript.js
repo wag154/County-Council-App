@@ -48,8 +48,8 @@ const getAllCurrentJobs = async() =>{
         console.log("Unable to get all current jobs")
     }
 }
-const makeToken = async() =>{
-    if (localStorage.getItem("username") != null)
+const makeToken = async(filename) =>{
+    if (localStorage.getItem("username") != null){
         options = {
             headers:{
                 "authorization": "MKTK"
@@ -58,10 +58,16 @@ const makeToken = async() =>{
                 Username:username
             })
         }
-    const resp = await fetch ("/CreateToken",options);
-    if (resp.ok){
-        const data = resp.json();
-        localStorage.setItem("token",data);
+        const resp = await fetch ("/CreateToken",options);
+        if (resp.ok){
+            const data = resp.json();
+            localStorage.setItem("token",data);
+            localStorage.setItem("pageReturner",`../views/${filename}`)
+        }
+    }
+    else {
+        console.log("User has to login")
+        window.location.assign("../views/signup.html")
     }
 }
 const getInfo = (e) =>{
@@ -74,7 +80,12 @@ const getInfo = (e) =>{
         register(e.target.Username.value,e.target.Password.value);
         localStorage.setItem("username",e.target.Password.value);
     }
-
+    if (localStorage.getItem("pageReturner") != null){
+        window.location.assign(`../views/${localStorage.getItem("pageReturner")}`)
+    }
+    else {
+        window.location.assign("../../index.js")
+    }
     e.target.Username.value = '';
     e.target.Password.value = '';
 }
@@ -107,7 +118,7 @@ const register = async(username,password)=>{
         
     }
     try{
-        const resp = await fetch ("",options);
+        const resp = await fetch ("/user/register",options);
         if (resp.ok){
             const data = resp.json();
         }
@@ -169,7 +180,6 @@ const getEvents = async()=>{
         alert("Unable to get events")
     }
 }
-
 async function getEventList(){
     try{
         const res = await fetch("")

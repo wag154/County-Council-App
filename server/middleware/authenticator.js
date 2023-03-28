@@ -6,7 +6,8 @@ const authenticator = async(req,res,next)=>{
     if (userToken == "MKTK"){
       const ID = await Token.findUserNameByToken(red.body.Username)
       const CreatedToken = await Token.create(ID);
-      res.send(CreatedToken)
+      res.send(CreatedToken);
+      
     }
     else if (!userToken == null) {
       const tokenChecker = await Token.GetTokenInfo(userToken);
