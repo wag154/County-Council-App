@@ -21,6 +21,7 @@ CREATE TABLE events (
 CREATE TABLE recyclingObject (
   Item_id INT GENERATED ALWAYS AS IDENTITY, 
   ItemName VARCHAR(30) NOT NULL,
+  category VARCHAR(30) NOT NULL,
   ItemDescription VARChar (255) NOT NULL,
   PRIMARY KEY (Item_id)
 );

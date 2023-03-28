@@ -6,6 +6,9 @@ class Items {
     this.ItemName = ItemName;
     this.ItemDescription = ItemDescription;
   }
+  static async getElementByCategory (cat){
+    const allElements = db.query("SELECT * FROM recyclingObject WHERE category = $1",[cat])
+  }
   static async getAll () {
       const response = await db.query('SELECT * FROM recyclingObject;')
       if(response.rows.length === 0){
