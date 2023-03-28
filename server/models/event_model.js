@@ -44,7 +44,7 @@ class Event {
     catch{}
   }
   static async destroy(id){
-
+    
   }
 }
 
