@@ -1,13 +1,12 @@
-const {Router} = require ("express");
-const event_controller = require ("../controllers/item_controller");
+const { Router } = require('express');
+const item_controller = require('../controllers/item_controller');
 
 const itemRouter = Router();
 
-//display all items
-
-//user count (not mvp)
-
-//remove items 
-
+itemRouter.get('/', item_controller.index);
+itemRouter.get('/:id', item_controller.show);
+itemRouter.post('/', item_controller.create);
+itemRouter.patch('/:id', item_controller.update);
+itemRouter.delete('/:id', item_controller.destroy);
 
 module.exports = itemRouter;
