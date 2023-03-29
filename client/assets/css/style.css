@@ -3,3 +3,6 @@
     aspect-ratio: 3/0.8;
     object-fit:cover;
 }
+a{
+    text-decoration: none;
+}

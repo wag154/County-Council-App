@@ -40,7 +40,6 @@ async function update(req, res) {
 		res.status(404).json({ message: err.message });
 	}
 }
-
 async function destroy(req, res) {
 	try {
 		const id = parseInt(req.params.id);
@@ -51,5 +50,4 @@ async function destroy(req, res) {
 		res.status(404).json({ message: err.message });
 	}
 }
-
 module.exports = { index, show, create, update, destroy };
