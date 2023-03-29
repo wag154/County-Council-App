@@ -33,6 +33,7 @@ describe('/items', () => {
 		const requestBody = {
 			name: 'test',
 			description: 'test',
+			category: 'test',
 		};
 		const response = await request(app).post('/items').send(requestBody);
 		expect(response.statusCode).toBe(201);
