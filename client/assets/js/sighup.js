@@ -1,12 +1,11 @@
 const btnJob = document.getElementById("btn-job");
 const eventTitle = document.getElementById("event-title");
 const signUpForm  = document.querySelector(".centreDis form");
-let login = false;
 const userLogin = async(username,password) =>{
   options ={
       method: "GET",
       Header:{
-          authorization : true
+          
       },
       body:JSON.stringify({
           Username : username,
@@ -61,6 +60,7 @@ const getInfo = (e) =>{
   e.target.Username.value = '';
   e.target.Password.value = '';
 }
+let login = false;
 const userSwitch = async() =>{
 
   const title = document.querySelector("#RegHeader")
