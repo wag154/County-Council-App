@@ -14,7 +14,6 @@ class Items {
 		const mapped = response.rows.map((item) => new Items(item));
 		return mapped;
 	}
-
 	static async getOneById(id) {
 		const response = await db.query(
 			'SELECT * FROM recyclingObject WHERE item_Id = $1;',
