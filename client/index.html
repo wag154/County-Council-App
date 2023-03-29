@@ -9,23 +9,37 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
     
-    <script src="./assets/js/script.js" defer></script>
+    <script src="./assets/js/Tscript.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </head>
 <body>
     <section class="banner-section">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 position-relative">
+                <h2 class="col-12 text-center position-absolute top-50 start-50 translate-middle">Welcome to the Florin Council</h2>
                 <img class="banner-section-img" src="./assets/images/home-banner.webp"/>
+            </div>
+        </div>
+    </section>
+    <section class="announcement-section mt-5">
+        <div class="container">
+            <div class="row">
+                <h2 class="text-center mb-3">Latest News</h2>
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" id="carousel-inner">
+                        <div class="carousel-item active text-center" id="carousel-item">
+                            <h3 id="event-title" class="text-center mb-3"></h3>
+                            <p id="event-desc"></p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
     <section class="menu-section mt-5">
         <div class="row">
-            <div class="col-12 text-center">
-                <h2>Welcome to the Florin Council</h2>
-            </div>
             <div class="row justify-content-center mt-3 text-white">
                 <div class="col-3 bg-danger m-2 p-2">
                     <p>Recycle your stuff</p>

@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events at Florin Council</title>
-​
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/client/assets/css/style.css">
     
     <script src="/client/assets/js/event.js" defer></script>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-​
+
 </head>
 <body>
     <section class="banner-section">
@@ -22,36 +22,12 @@
             </div>
         </div>
     </section>
-    <section class="announcement-section mt-5">
-        <div class="container">
-            <div class="row">
-                <h2 class="text-center mb-3">Announcement</h2>
-​
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active" id="carousel-item">
-                            <h3 id="event-title" class="text-center mb-3"></h3>
-                            <p id="event-desc"></p>
-                        </div>
-                    </div>
-                </div>
-​
-            </div>
-        </div>
-    </section>
     <section class="event-list-section mt-5">
         <div class="container">
-            <h2 class="text-center m-5">Events</h2>
-            <div class="row d-flex justify-content-around">
-                <div class="position-relative event-list-div col-5 mt-5">
+            <div class="row d-flex justify-content-center" id="event-list-div">
+                <div class="position-relative event-list-div col-3 m-3 " >
                     <img class="position-absolute img-fluid" src="/client/assets/images/home-banner.webp"/>
-                    <h2 class="position-absolute top-50 start-50 translate-middle">Event Name</h2>
-                    <div class="position-absolute overlay-mask"></div>
-                </div>
-                <div class="position-relative event-list-div col-5 mt-5">
-                    <img class="position-absolute img-fluid" src="/client/assets/images/home-banner.webp"/>
-                    <h2 class="position-absolute top-50 start-50 translate-middle">Event Name</h2>
-                    <div class="position-absolute overlay-mask"></div>
+                    <h4 class="position-absolute top-50 start-50 translate-middle text-center rounded bg-secondary w-75 p-3"></h4>
                 </div>
             </div>
         </div>

@@ -193,15 +193,51 @@ async function getEventList(){
     }
 }
 
-signUpForm.addEventListener("submit",getInfo)
+if(signUpForm) {
+    signUpForm.addEventListener("submit",getInfo)
 
-btnEvents.addEventListener('click', () => {
-window.location.href = "./assets/views/events.html"
-})
+}
+
+if(btnEvents){
+    btnEvents.addEventListener('click', () => {
+        window.location.href = "./assets/views/events.html"
+    })
+}
+
+
+if(btnRecycle) {
 btnRecycle.addEventListener('click', () => {
     window.location.href = "./assets/views/recycles.html"
 })
+}
+
+if(btnJob) {
 btnJob.addEventListener('click', () => {
     window.location.href = "./assets/views/jobs.html"
 })
-eventTitle.innerText = "Join new football team"
+}
+const eventList = [
+    {"events_id": 1, "event_name": "2mile Marathon", "event_description": "Marathon for charity", "event_place": "Florin", "event_time": "30 March 2023 7 am"},
+    {"events_id": 2, "event_name": "Football Match", "event_description": "On local youth demand", "event_place": "Florin", "event_time": "30 April 2023 10 am"},
+    {"events_id": 3, "event_name": "Badminton Match", "event_description": "Match for charity", "event_place": "Florin", "event_time": "15 April 2023 10 am"}
+
+]
+var EventListCount = 0
+const carouselInnerDiv = document.getElementById("carousel-inner")
+eventList.forEach(event => {
+    var carouselItemDivChild = document.querySelector(".carousel-item")
+
+    if (EventListCount > 0) {
+        
+        var carouselItemDivChildClone = carouselItemDivChild.cloneNode(true)
+        carouselItemDivChildClone.children[1].innerHTML = event.event_name
+        carouselItemDivChildClone.classList.remove("active")
+        carouselInnerDiv.appendChild(carouselItemDivChildClone)
+        
+    }
+    else {
+        EventListCount++
+        carouselItemDivChild.children[1].innerHTML = event.event_name
+    }
+    
+})
