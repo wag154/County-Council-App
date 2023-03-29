@@ -18,7 +18,6 @@ async function show(req, res) {
 		res.status(404).json({ message: err.message });
 	}
 }
-
 async function create(req, res) {
 	try {
 		const data = req.body;

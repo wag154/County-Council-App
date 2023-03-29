@@ -2,6 +2,8 @@
     width: 100%;
     aspect-ratio: 3/0.8;
     object-fit:cover;
+    height: 100%;
+    opacity: 20%;
 }
 a{
     text-decoration: none;

@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "directories": {
-    "test": "tests"
+  "scripts": {
+    "dev": "nodemon ./server/index.js",
+    "setup-db": "node ./server/database/setup.js",
+    "test": "jest --coverage",
+    "start": "node ./server/index.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -17,14 +20,5 @@
     "supertest": "^6.3.3",
     "uuidv4": "^6.2.13"
   },
-  "devDependencies": {},
-  "scripts": {
-    "dev": "nodemon -L ./server/index.js",
-    "setup-db": "node ./server/database/setup.js",
-    "test": "jest --coverage",
-    "start": "node ./server/index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
-}
+  "devDependencies": {}
+  }

@@ -9,6 +9,15 @@ const recyclingParent = document.querySelector("#displayTest")
 let login = false;
 let currentDotMenuIndex = 0;
 
+const getInfo = (e) =>{
+    e.preventDefault();
+
+    if (login == true){
+        userLogin(e.target.Username.value,e.target.Password.value);
+    }
+    else {
+        register(e.target.Username.value,e.target.Password.value);
+        
 const DisplayJobs = async(data)=>{
     try{
         data.forEach(e=>{
@@ -143,6 +152,7 @@ const userLogin = async(username,password) =>{
         const resp = fetch("/user/login",options)
         if (resp.ok){
             const data = resp.json();
+
             localStorage.setItem("username",data.username)
         }
     }
@@ -182,6 +192,7 @@ const getEvents = async()=>{
         alert("Unable to get events")
     }
 }
+
 async function getEventList(){
     try{
         const res = await fetch("")
