@@ -15,7 +15,7 @@ class Token {
     return newToken
   }
   static async findUserNameByToken(token){
-    const resp = await db.query("SELECT UserAccount_id FROM UserAccount as user JOIN token t ON user.UserAccount_id = t.token_id WHERE token = $1",[token])
+    const resp = await db.query("SELECT UserAccount_id FROM UserAccount as u JOIN token t ON u.UserAccount_id = t.token_id WHERE t.token = $1",[token])
     if (resp.rows.length == 1){
       return new Token(resp.rows[0])
     }
