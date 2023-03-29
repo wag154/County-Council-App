@@ -33,7 +33,7 @@ class User {
 				'INSERT INTO UserAccount(username,password) VALUES ($1,$2) RETURNING *;',
 				[name, password]
 			);
-			return add.rows.map((e) => User(e));
+			return add.rows.map((e) => new User(e));
 		} else {
 			console.log('Username already exists');
 			return 'Already Exists';
@@ -44,7 +44,7 @@ class User {
 			'SELECT * FROM userAccount WHERE username = $1 AND password = $2 RETURNING *;',
 			[name, password]
 		);
-		return add.rows.map((e) => User(e));
+		return add.rows.map((e) => new User(e));
 	}
 
 	async destroy(id) {
