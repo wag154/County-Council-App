@@ -28,8 +28,8 @@ const register = async(username,password)=>{
   const options = {
       method : "POST",
       Header:{
-          "content-Type" :"Application/json",
-          "Access-Control-Allow-Origin":true
+        Accept :"application/json",  
+        "Content-Type" :"application/json"
       },
       body : JSON.stringify({
           Username : username,
@@ -38,9 +38,11 @@ const register = async(username,password)=>{
       
   }
   try{
-      const resp = await fetch ("https://council-app-backend.onrender.com/user/register",options);
+      const resp = await fetch ("http://127.0.0.1:5500/client/assets/views/sighup.html/user/register",options);
+      console.log("What?!?",resp)
       if (resp.ok){
-          const data = resp.json();
+          const data = await resp.json();
+          
       }
   }catch{
       console.log("Unable to register")

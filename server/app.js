@@ -2,10 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-app.use(cors());
-app.use(cors({
-	methods:['GET','POST','DELETE','UPDATE','PUT','PATCH']
-}));
+
 app.use(express.json());
 
 const userRouter = require('./routers/user_router');
@@ -17,8 +14,8 @@ app.get('/', (req, res) => {
 	res.send('Welcome to our API!');
 });
 
-// app.use('/user', userRouter);
 app.use('/items', itemRouter);
+app.use('/user', userRouter);
 app.use('/jobs', jobRouter);
 app.use('/events', eventRouter);
 
