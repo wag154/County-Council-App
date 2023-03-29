@@ -5,10 +5,6 @@ class User {
 		this.username = username;
 		this.password = password;
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> d98aadf90e78a86c3e7bac7d4d1972145a93980f
 
 	static async getUserByID(name) {
 		const getID = await db.query(
@@ -59,7 +55,3 @@ class User {
 	}
 }
 module.exports = User;
-<<<<<<< HEAD
-=======
-
->>>>>>> d98aadf90e78a86c3e7bac7d4d1972145a93980f
