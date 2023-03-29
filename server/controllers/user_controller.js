@@ -2,7 +2,7 @@ const User = require('../models/user_model');
 
 const userLogin = async (req, res) => {
 	try {
-		const getLogin = await User.login(req.body.Username, red.body.Password);
+		const getLogin = await User.login(req.body.username, red.body.password);
 		res.send(getLogin).status(200);
 	} catch(e) {
 			
@@ -11,8 +11,8 @@ const userLogin = async (req, res) => {
 };
 async function create(req, res) {
 	try {
-		const createUser = await User.create(req.body.Username, req.body.Password);
-		res.send(createUser).status(200);
+		const createUser = await User.create(req.body.username, req.body.password);
+		res.json(createUser).status(200);
 	} catch(e) {
 		res.json({message : e.message}).status(404)
 	}

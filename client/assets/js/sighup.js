@@ -15,9 +15,10 @@ const userLogin = async(username,password) =>{
   }
   
   try{
-      const resp = fetch("/user/login",options)
+      const resp =await  fetch("/user/login",options)
       if (resp.ok){
-          const data = resp.json();
+            console.log("data was here!")
+          const data = await resp.json();
       }
   }
   catch {
@@ -25,24 +26,22 @@ const userLogin = async(username,password) =>{
   }
 }
 const register = async(username,password)=>{
+    const data = {
+        username:username,
+        password:password
+    }
   const options = {
       method : "POST",
-      Header:{
+      headers:{
         Accept :"application/json",  
         "Content-Type" :"application/json"
       },
-      body : JSON.stringify({
-          Username : username,
-          Password : password
-      })
-      
+      body : JSON.stringify(data)
   }
   try{
-      const resp = await fetch ("http://127.0.0.1:5500/client/assets/views/sighup.html/user/register",options);
-      console.log("What?!?",resp)
+      const resp = await fetch ("http://127.0.0.1:3000/user/register",options);
       if (resp.ok){
           const data = await resp.json();
-          
       }
   }catch{
       console.log("Unable to register")
@@ -52,11 +51,11 @@ const getInfo = (e) =>{
   e.preventDefault();
   if (login == true){
       userLogin(e.target.Username.value,e.target.Password.value);
-      localStorage = ("username",e.target.Username.value);
+      localStorage.setItem("username",e.target.Username.value);
   }
   else {
       register(e.target.Username.value,e.target.Password.value);
-      localStorage = ("username",e.target.Password.value);
+      localStorage.setItem("username",e.target.Password.value);
   }
 
   e.target.Username.value = '';

@@ -2,7 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-
+app.use(cors(
+	methods = ["POST,USE,PATCH,UPDATE"]
+))
 app.use(express.json());
 
 const userRouter = require('./routers/user_router');
