@@ -29,7 +29,7 @@ class Items {
 	static async create(data) {
 		const { name, description, category } = data;
 		let response = await db.query(
-			'INSERT INTO recyclingObject (itemName, itemDescription, category) VALUES ($1, $2, $3) RETURNING *;',
+			'INSERT INTO recyclingObject (itemName, itemDescription, itemCategory) VALUES ($1, $2, $3) RETURNING *;',
 			[name, description, category]
 		);
 		const newItem = response.rows[0];
