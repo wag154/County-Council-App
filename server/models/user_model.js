@@ -20,7 +20,6 @@ class User {
 				"SELECT * FROM UserAccount WHERE username = $1 AND password = $2",
 				[name, password]
 			);
-			console.log(UsernameCheck.rows.length)
 			if (UsernameCheck.rows.length == 0) {
 				return true;
 			} else {
@@ -49,11 +48,18 @@ class User {
 		}
 	}
 	static async login(name, password) {
-		const checker = db.query(
-			'SELECT * FROM userAccount WHERE username = $1 AND password = $2 RETURNING *;',
-			[name, password]
-		);
-		return add.rows.map((e) => new User(e));
+		try{
+			const checker = await db.query(
+				'SELECT * FROM userAccount WHERE username = $1 AND password = $2 RETURNING *;',
+				[name, password]
+			);
+			if (checker.rows.length == 0){
+				return checker.rows[0];
+			};
+		}
+		catch{
+			throw error ("Unable to check login")
+		}
 	}
 
 	async destroy(id) {

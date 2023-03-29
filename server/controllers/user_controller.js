@@ -1,8 +1,9 @@
 const User = require('../models/user_model');
 
 const userLogin = async (req, res) => {
+	console.log("Hello")
 	try {
-		const getLogin = await User.login(req.body.username, red.body.password);
+		const getLogin = await User.login(req.params.username, red.params.password);
 		res.send(getLogin).status(200);
 	} catch(e) {
 			
