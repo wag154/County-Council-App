@@ -5,4 +5,48 @@
 }
 a{
     text-decoration: none;
+    transition: .5s;
+}
+#Menu{
+    width : 99vw;
+    height : 6vh;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+}
+#EventBody{
+    width : 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+nav ul  {
+    margin-right:  325px;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+}
+li{
+    transition: .5s;
+    margin : 5px
+}
+ li:hover{
+    transform: scale(1.1);
+}
+#signup:hover{
+    transform: scale(1.1);
+}
+.EventBox{
+    width : 20vw;
+    height : 30vh;
+    display: flex;
+    flex-direction: column;
+}
+#govIcon{
+    height : 60px;
+    width : auto;
 }
