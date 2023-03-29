@@ -41,7 +41,7 @@ const getAllCurrentJobs = async() =>{
         const resp = fetch ("/jobs/")
         if (resp.ok){
             const data = resp.JSON();
-            //func here
+            DisplayJobs(data)
         }
     }
     catch {

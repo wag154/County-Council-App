@@ -30,7 +30,7 @@ class User {
 		const isNewAccount = check(name, password);
 		if (isNewAccount == true) {
 			const add = await db.query(
-				'INSERT INTO UserAccount VALUES ($1,$2) RETURNING *;',
+				'INSERT INTO UserAccount(username,password) VALUES ($1,$2) RETURNING *;',
 				[name, password]
 			);
 			return add.rows.map((e) => User(e));

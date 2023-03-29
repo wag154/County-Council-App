@@ -9,13 +9,13 @@ class Token {
   }
   static async create(user_id){
     const token = uuidv4();
-    const resp = await db.query("INSERT INTO token(token,user_id) VALUES ($1,$2)",[token,user_id])
+    const resp = await db.query("INSERT INTO token(token,UserAccount_id) VALUES ($1,$2)",[token,user_id])
     const ID = resp.rows[0].token_id;
     const newToken = await Token.GetTokenInfo(ID);
     return newToken
   }
   static async findUserNameByToken(token){
-    const resp = await db.query("SELECT UserAccount_id FROM UserAccount as user JOIN token t ON user.UserAccount_id = t.token_id WHERE token = $1",[token])
+    const resp = await db.query("SELECT UserAccount_id FROM UserAccount AS U JOIN token t ON U.UserAccount_id = t.token_id WHERE t.Token = $1",[token])
     if (resp.rows.length == 1){
       return new Token(resp.rows[0])
     }
@@ -51,7 +51,7 @@ class Token {
     }
   }
   static async findID (token){
-    const resp = await db.query("SELECT UserAccount_id FROM UserAccount AS user JOIN token t ON token_id = UserAccount_id WHERE t.token = $1",[token])
+    const resp = await db.query("SELECT UserAccount_id FROM UserAccount AS u JOIN token t ON t.token_id = u.UserAccount_id WHERE t.token = $1",[token])
     return (resp.rows[0])
   }
 }

@@ -35,7 +35,7 @@ CREATE TABLE jobs(
   jobs_id INT GENERATED ALWAYS AS IDENTITY,
   job_title VARCHAR(45) NOT NULL,
   job_description VARCHAR(225) NOT NULL,
-  job_pay VARCHAR(30)
+  job_pay VARCHAR(30),
   job_contactInfo VARCHAR(50) NOT NULL,
   PRIMARY KEY (jobs_id)
 );
