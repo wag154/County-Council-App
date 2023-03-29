@@ -1,10 +1,17 @@
 const db = require('../database/connect');
 
 class Jobs {
-	constructor({ jobs_id, job_title, job_description, job_contactInfo }) {
+	constructor({
+		jobs_id,
+		job_title,
+		job_description,
+		job_pay,
+		job_contactInfo,
+	}) {
 		this.id = jobs_id;
 		this.title = job_title;
 		this.description = job_description;
+		this.pay = job_pay;
 		this.contactInfo = job_contactInfo;
 	}
 	static async getAll() {
@@ -26,19 +33,19 @@ class Jobs {
 	}
 
 	static async create(data) {
-		const { title, description, contactInfo } = data;
+		const { title, description, pay, contactInfo } = data;
 		let response = await db.query(
-			'INSERT INTO jobs (job_title, job_description, job_contactInfo) VALUES ($1, $2, $3) RETURNING *;',
-			[title, description, contactInfo]
+			'INSERT INTO jobs (job_title, job_description, job_pay, job_contactInfo) VALUES ($1, $2, $3, $4) RETURNING *;',
+			[title, description, pay, contactInfo]
 		);
 		const newJob = response.rows[0];
 		return new Jobs(newJob);
 	}
 
 	async update(data) {
-		const { title, description, contactInfo } = data;
+		const { title, description, pay, contactInfo } = data;
 		let response = await db.query(
-			'UPDATE jobs SET job_title = $1, job_description = $2, job_contactInfo = $3 WHERE jobs_id = $4 RETURNING *;',
+			'UPDATE jobs SET job_title = $1, job_description = $2, job_pay = $3, job_contactInfo = $4 WHERE jobs_id = $5 RETURNING *;',
 			[title, description, contactInfo, this.id]
 		);
 		if (response.rows.length != 1) {
