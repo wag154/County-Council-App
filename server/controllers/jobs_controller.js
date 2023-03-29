@@ -8,7 +8,15 @@ async function index(req, res) {
 		res.status(500).json({ message: err.message });
 	}
 }
-
+const getName = async(req,res)=>{
+	try{
+		const name = req.body.name;
+		
+	}
+	catch(err){
+		res.status(404).json({message: err.message})
+	}
+}
 async function show(req, res) {
 	try {
 		const id = parseInt(req.params.id);
@@ -50,4 +58,4 @@ async function destroy(req, res) {
 		res.status(404).json({ message: err.message });
 	}
 }
-module.exports = { index, show, create, update, destroy };
+module.exports = { index, show, create, update, destroy,getName };

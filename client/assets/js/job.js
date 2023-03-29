@@ -6,7 +6,9 @@ const displayJobs = async(data)=>{
     const jobContent = document.createElement("p1");
     const applyButton = document.createElement("button");
     
-    applyButton.onclick = ()=>{} //func here
+    applyButton.onclick = ()=>{
+      localStorage.getItem("username")
+    } //func here
     jobTitle.textContent = e.title;
     jobContent.innerHTML = `${e.description}`;
     applyButton.textContent = "Apply";

@@ -8,6 +8,9 @@ class Jobs {
 		this.pay = job_pay;
 		this.contactInfo = job_contactInfo;
 	}
+	static async getByUserName(){
+		const resp = await db.query("SELECT FROM UserActivity AS UA JOIN UserAccount U ON U.UserAccount_id = UA.Activity_id JOIN jobs j ON j.jobs_id = UA_Activity_id")
+	}
 	static async getAll() {
 		const response = await db.query('SELECT * FROM jobs;');
 		if (response.rows.length === 0) {
