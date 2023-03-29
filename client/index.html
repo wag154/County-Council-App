@@ -14,45 +14,49 @@
 
 </head>
 <body>
-    <section class="banner-section">
+    <!-- <section class="banner-section">
         <div class="row">
             <div class="col-12 position-relative">
                 <h2 class="col-12 text-center position-absolute top-50 start-50 translate-middle">Welcome to the Florin Council</h2>
                 <img class="banner-section-img" src="./assets/images/home-banner.webp"/>
             </div>
         </div>
+    </section> -->
+    <section class="banner-section">
+            <div class="position-relative">
+                <h2 class="col-12 text-center position-absolute top-50 start-50 translate-middle">Welcome to the Florin Council</h2>
+                <img class="banner-section-img" src="./assets/images/home-banner.webp"/>
+            </div>
     </section>
     <section class="announcement-section mt-5">
         <div class="container">
             <div class="row">
-                <h2 class="text-center mb-3">Latest News</h2>
+                <h3 class="text-center mb-3">Latest News</h3>
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner" id="carousel-inner">
                         <div class="carousel-item active text-center" id="carousel-item">
                             <h3 id="event-title" class="text-center mb-3"></h3>
+                            <p></p>
+                            <p></p>
                             <p id="event-desc"></p>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
     <section class="menu-section mt-5">
-        <div class="row">
-            <div class="row justify-content-center mt-3 text-white">
-                <div class="col-3 bg-danger m-2 p-2">
-                    <p>Recycle your stuff</p>
-                    <button id="btn-recycle" type="button" class="btn btn-secondary">More</button>
-                </div>
-                <div class="col-3 bg-primary m-2 p-2">
-                    <p>Events</p>
-                    <button id="btn-events" type="button" class="btn btn-secondary">More</button>
-                </div>
-                <div class="col-3 bg-success m-2 p-2">
-                     <p>Job/Volunteer</p>
-                    <button id="btn-job" type="button" class="btn btn-secondary">More</button>
-                </div>
+        <div class="container">
+            <div class="row justify-content-center mt-3 text-center">
+                <a class="col-3 bg-danger m-2 p-5" href="./assets/views/recycles.html">
+                    <h5 class="text-white">Bins and Recycling</h5>
+                </a>
+                <a class="col-3 bg-primary m-2 p-5" href="./assets/views/events.html">
+                    <h5 class="text-white">Events</h5>
+                </a>
+                <a class="col-3 bg-success m-2 p-5" href="./assets/views/jobs.html">
+                     <h5 class="text-white">Job / Volunteer</h5>
+                </a>
             </div>
         </div>
     </section>
