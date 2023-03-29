@@ -1,14 +1,21 @@
-DROP TABLE IF EXISTS UserAccount;
-DROP TABLE IF EXISTS events;
-DROP TABLE IF EXISTS recyclingObjects;
-DROP TABLE IF EXISTS UserActivity;
-DROP TABLE IF EXISTS jobs;
+DROP TABLE IF EXISTS UserAccount cascade;
+DROP TABLE IF EXISTS events cascade;
+DROP TABLE IF EXISTS recyclingObject cascade;
+DROP TABLE IF EXISTS UserActivity cascade;
+DROP TABLE IF EXISTS jobs cascade;
 
-CREATE TABLE UserAccount (
-  UserAccount_id INT GENERATED ALWAYS AS IDENTITY,
+CREATE TABLE userAccount (
+  userAccount_id INT GENERATED ALWAYS AS IDENTITY,
   username VARCHAR(30) NOT NULL,
   password VARCHAR(100) NOT NULL,
-  PRIMARY KEY (UserAccount_id)
+  PRIMARY KEY (userAccount_id)
+);
+CREATE TABLE token (
+  token_id INT GENERATED ALWAYS AS IDENTITY,
+  user_id INT NOT NULL,
+  Token CHAR(36) UNIQUE NOT NULL,
+  PRIMARY KEY (token_id),
+  FOREIGN KEY (user_id) REFERENCES UserAccount(UserAccount_id)
 );
 CREATE TABLE events (
   events_id INT GENERATED ALWAYS AS IDENTITY,
@@ -19,26 +26,26 @@ CREATE TABLE events (
   PRIMARY KEY (events_id)
 );
 CREATE TABLE recyclingObject (
-  Item_id INT GENERATED ALWAYS AS IDENTITY, 
-  ItemName VARCHAR(30) NOT NULL,
-  category VARCHAR(30) NOT NULL,
-  ItemDescription VARChar (255) NOT NULL,
-  PRIMARY KEY (Item_id)
+  item_id INT GENERATED ALWAYS AS IDENTITY, 
+  itemName VARCHAR(30) NOT NULL,
+  itemDescription VARCHAR (255) NOT NULL,
+  PRIMARY KEY (item_id)
 );
 CREATE TABLE jobs(
   jobs_id INT GENERATED ALWAYS AS IDENTITY,
   job_title VARCHAR(45) NOT NULL,
   job_description VARCHAR(225) NOT NULL,
+  job_pay VARCHAR(30),
   job_contactInfo VARCHAR(50) NOT NULL,
   PRIMARY KEY (jobs_id)
 );
-CREATE TABLE UserActivity (
-  Activity_id INT GENERATED ALWAYS AS IDENTITY,
-  UserAccount_id INT NOT NULL,
+CREATE TABLE userActivity (
+  activity_id INT GENERATED ALWAYS AS IDENTITY,
+  userAccount_id INT NOT NULL,
   jobs_id INT,
-  Item_id INT,
-  PRIMARY KEY (Activity_id),
-  FOREIGN KEY (UserAccount_id) REFERENCES UserAccount(UserAccount_id),
+  item_id INT,
+  PRIMARY KEY (activity_id),
+  FOREIGN KEY (userAccount_id) REFERENCES userAccount(userAccount_id),
   FOREIGN KEY (jobs_id) REFERENCES jobs(jobs_id),
-  FOREIGN KEY (Item_id) REFERENCES recyclingObject(Item_id)
+  FOREIGN KEY (item_id) REFERENCES recyclingObject(item_id)
 );

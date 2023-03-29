@@ -9,7 +9,6 @@ const recyclingParent = document.querySelector("#displayTest")
 let login = false;
 let currentDotMenuIndex = 0;
 
-
 const getInfo = (e) =>{
     e.preventDefault();
 
@@ -18,6 +17,83 @@ const getInfo = (e) =>{
     }
     else {
         register(e.target.Username.value,e.target.Password.value);
+        
+const DisplayJobs = async(data)=>{
+    try{
+        data.forEach(e=>{
+           const jobContainer = document.createElement("div") 
+           const JobHeader = document.createElement("h1");
+           const jobDescription = document.createElement("p1");
+           const applyBtn = document.createElement("button")
+/*
+            jobConatiner.style = "style";
+            JobHeader.style = "style";
+            jobDescription.style = "style";
+            applyBtn.style = "style"
+*/
+           jobDescription.innerHTML = `${e[job_pay]}<br>${e.job_description}<br>${e.job_contactInfo}`;
+           jobContainer.appendChild(JobHeader);
+           jobContainer.appendChild(jobDescription);
+           jobContainer.appendChild(applyBtn);
+           //add parent container here by ID
+           //$("ParentIDHere").appendChild(jobContainer)
+        })
+    }
+    catch {
+        throw "unable to display jobs"
+    }
+
+}
+
+const getAllCurrentJobs = async() =>{
+    try{
+        const resp = fetch ("/jobs/")
+        if (resp.ok){
+            const data = resp.JSON();
+            DisplayJobs(data)
+        }
+    }
+    catch {
+        console.log("Unable to get all current jobs")
+    }
+}
+const makeToken = async(filename) =>{
+    if (localStorage.getItem("username") != null){
+        options = {
+            headers:{
+                "authorization": "MKTK"
+            },
+            body:json.stringify({
+                Username:username
+            })
+        }
+        const resp = await fetch ("/CreateToken",options);
+        if (resp.ok){
+            const data = resp.json();
+            localStorage.setItem("token",data);
+            localStorage.setItem("pageReturner",`../views/${filename}`)
+        }
+    }
+    else {
+        console.log("User has to login")
+        window.location.assign("../views/signup.html")
+    }
+}
+const getInfo = (e) =>{
+    e.preventDefault();
+    if (login == true){
+        userLogin(e.target.Username.value,e.target.Password.value);
+        localStorage.setItem("username",e.target.Username.value);
+    }
+    else {
+        register(e.target.Username.value,e.target.Password.value);
+        localStorage.setItem("username",e.target.Password.value);
+    }
+    if (localStorage.getItem("pageReturner") != null){
+        window.location.assign(`../views/${localStorage.getItem("pageReturner")}`)
+    }
+    else {
+        window.location.assign("../../index.js")
     }
     e.target.Username.value = '';
     e.target.Password.value = '';
@@ -51,9 +127,11 @@ const register = async(username,password)=>{
         
     }
     try{
-        const resp = await fetch ("",options);
+        const resp = await fetch ("/user/register",options);
         if (resp.ok){
             const data = resp.json();
+            localStorage.setItem("username",data.username);
+            return
         }
     }catch{
         console.log("Unable to register")
@@ -74,7 +152,8 @@ const userLogin = async(username,password) =>{
         const resp = fetch("/user/login",options)
         if (resp.ok){
             const data = resp.json();
-            //function here
+
+            localStorage.setItem("username",data.username)
         }
     }
     catch {
@@ -126,6 +205,7 @@ async function getEventList(){
 }
 
 signUpForm.addEventListener("submit",getInfo)
+
 btnEvents.addEventListener('click', () => {
 window.location.href = "./assets/views/events.html"
 })

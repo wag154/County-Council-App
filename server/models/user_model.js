@@ -1,11 +1,10 @@
-const db = require ("../database/connect");
+const db = require('../database/connect');
 class User {
-  constructor(UserAccount_id,username,password){
-    this.UserAccount_id = UserAccount_id;
-    this.username = username;
-    this.password = password;
-  }
-
+	constructor({ userAccount_id, username, password }) {
+		this.id = userAccount_id;
+		this.username = username;
+		this.password = password;
+	}
   static async getUserByID(name){
     try{
       const getID = await db.query("SELECT UserAccount_id FROM UserAccount WHERE username = $1",[name])
