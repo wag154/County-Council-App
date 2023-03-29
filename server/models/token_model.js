@@ -51,7 +51,7 @@ class Token {
     }
   }
   static async findID (token){
-    const resp = await db.query("SELECT UserAccount_id FROM UserAccount AS user JOIN token t ON token_id = UserAccount_id WHERE t.token = $1",[token])
+    const resp = await db.query("SELECT UserAccount_id FROM UserAccount AS u JOIN token t ON t.token_id = u.UserAccount_id WHERE t.token = $1",[token])
     return (resp.rows[0])
   }
 }
