@@ -1,11 +1,12 @@
 const db = require('../database/connect');
 
 class Jobs {
-	constructor(jobs_id, job_title, job_description, job_contactInfo) {
+	constructor(jobs_id, job_title, job_description, job_pay, job_contactInfo) {
 		this.id = jobs_id;
-		this.job_title = job_title;
-		this.job_description = job_description;
-		this.job_contactInfo = job_contactInfo;
+		this.title = job_title;
+		this.description = job_description;
+		this.pay = job_pay;
+		this.contactInfo = job_contactInfo;
 	}
 	static async getAll() {
 		const response = await db.query('SELECT * FROM jobs;');
@@ -26,10 +27,10 @@ class Jobs {
 	}
 
 	static async create(data) {
-		const { job_title, job_description, job_contactInfo } = data;
+		const { title, description, pay, contactInfo } = data;
 		let response = await db.query(
-			'INSERT INTO jobs (job_title, job_description, job_contactInfo) VALUES ($1, $2, $3) RETURNING *;',
-			[job_title, job_description, job_contactInfo]
+			'INSERT INTO jobs (job_title, job_description, job_pay, job_contactInfo) VALUES ($1, $2, $3 $4) RETURNING *;',
+			[title, description, pay, contactInfo]
 		);
 		const newJob = response.rows[0];
 		return new Jobs(newJob);
@@ -37,8 +38,8 @@ class Jobs {
 
 	async update(data) {
 		let response = await db.query(
-			'UPDATE jobs SET job_title = $1, job_description = $2, job_contactInfo = $3 WHERE jobs_id = $4 RETURNING *;',
-			[job_title, this.job_description, this.job_description, this.id]
+			'UPDATE jobs SET job_title = $1, job_description = $2, job_pay = $3, job_contactInfo = $4 WHERE jobs_id = $5 RETURNING *;',
+			[this.job_title, this.job_description, this.job_pay, this.job_description, this.id]
 		);
 		if (response.rows.length != 1) {
 			throw new Error('Cannot update job');

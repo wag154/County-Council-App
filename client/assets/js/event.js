@@ -1,17 +1,4 @@
 
-const eventList = [
-    {"events_id": 1, "event_name": "2mile Marathon", "event_description": "Marathon for charity", "event_place": "Florin", "event_time": "30 March 2023 7 am"},
-    {"events_id": 2, "event_name": "Football Match", "event_description": "On local youth demand", "event_place": "Florin", "event_time": "30 April 2023 10 am"},
-    {"events_id": 3, "event_name": "Badminton Match", "event_description": "Match for charity", "event_place": "Florin", "event_time": "15 April 2023 10 am"},
-    {"events_id": 3, "event_name": "Badminton Match", "event_description": "Match for charity", "event_place": "Florin", "event_time": "15 April 2023 10 am"},
-    {"events_id": 3, "event_name": "Badminton Match", "event_description": "Match for charity", "event_place": "Florin", "event_time": "15 April 2023 10 am"},
-    {"events_id": 3, "event_name": "Badminton Match", "event_description": "Match for charity", "event_place": "Florin", "event_time": "15 April 2023 10 am"},
-    {"events_id": 3, "event_name": "Badminton Match", "event_description": "Match for charity", "event_place": "Florin", "event_time": "15 April 2023 10 am"},
-    {"events_id": 3, "event_name": "Badminton Match", "event_description": "Match for charity", "event_place": "Florin", "event_time": "15 April 2023 10 am"},
-    {"events_id": 3, "event_name": "Badminton Match", "event_description": "Match for charity", "event_place": "Florin", "event_time": "15 April 2023 10 am"},
-    {"events_id": 3, "event_name": "Badminton Match", "event_description": "Match for charity", "event_place": "Florin", "event_time": "15 April 2023 10 am"},
-    {"events_id": 3, "event_name": "Badminton Match", "event_description": "Match for charity", "event_place": "Florin", "event_time": "15 April 2023 10 am"}
-]
 const DisplayEvents = (data) =>{
     let count = 0;
     data.forEach(e =>{

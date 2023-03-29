@@ -1,10 +1,7 @@
-const btnEvents = document.getElementById("btn-events");
-const btnRecycle = document.getElementById("btn-recycle");
 const btnJob = document.getElementById("btn-job");
 const eventTitle = document.getElementById("event-title");
-const EventDesc = document.querySelector("#event-title p");
 const signUpForm  = document.querySelector(".centreDis form");
-const recyclingParent = document.querySelector("#displayTest")
+
 
 let login = false;
 let currentDotMenuIndex = 0;
