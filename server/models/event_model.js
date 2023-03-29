@@ -14,7 +14,7 @@ class Event {
 		this.place = event_place;
 		this.time = event_time;
 	}
-	static async getAll() {x
+	static async getAll() {
 		const response = await db.query('SELECT * FROM events;');
 		if (response.rows.length === 0) {
 			console.log('No events');

@@ -4,7 +4,8 @@ class Items {
 	constructor({ item_id, itemname, itemdescription, itemcategory }) {
 		this.id = item_id;
 		this.name = itemname;
-		(this.description = itemdescription), (this.category = itemcategory);
+		this.description = itemdescription;
+		this.category = itemcategory;
 	}
 	static async getAll() {
 		const response = await db.query('SELECT * FROM recyclingObject;');
@@ -38,7 +39,7 @@ class Items {
 	async update(data) {
 		const { name, description } = data;
 		let response = await db.query(
-			'UPDATE recyclingObject SET itemName = $1, itemDescription = $2, itemcategory = $3  WHERE item_Id = $3 RETURNING *;',
+			'UPDATE recyclingObject SET itemName = $1, itemDescription = $2, itemCategory = $3  WHERE item_Id = $3 RETURNING *;',
 			[name, description, category, this.id]
 		);
 		if (response.rows.length != 1) {

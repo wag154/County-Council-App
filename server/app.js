@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 	res.send('Welcome to our API!');
 });
 
-app.use('/user', userRouter);
+// app.use('/user', userRouter);
 app.use('/items', itemRouter);
 app.use('/jobs', jobRouter);
 app.use('/events', eventRouter);
