@@ -16,22 +16,21 @@ class User {
 
 	static async check(name, password) {
 		try{
-
 			const UsernameCheck = await db.query(
 				"SELECT * FROM UserAccount WHERE username = $1 AND password = $2",
 				[name, password]
 			);
-			if (UsernameCheck.rows.length != 0) {
+			console.log(UsernameCheck.rows.length)
+			if (UsernameCheck.rows.length == 0) {
 				return true;
 			} else {
-				return true;
+				return false;
 			}
 		}
 		catch{
 			console.log("Check not working")
 		}
 	}
-
 	static async create(name, password) {
 		console.log(name,password)
 		try{
