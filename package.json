@@ -4,9 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+
     "dev": "nodemon index.js",
     "setup-db": "node ./database/setup",
     "test": "echo \"Error: no test specified\" && exit 1"
+
+    "dev": "nodemon ./server/index.js",
+    "setup-db": "node ./server/database/setup.js",
+    "test": "jest",
+    "start": "node ./server/index.js"
+
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +26,11 @@
     "uuidv4": "^6.2.13"
   },
   "dependencies": {
+
     "bcrypt": "^5.1.0"
+
+    "jest": "^29.5.0",
+    "supertest": "^6.3.3"
+
   }
 }

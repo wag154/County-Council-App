@@ -4,11 +4,11 @@ DROP TABLE IF EXISTS recyclingObject cascade;
 DROP TABLE IF EXISTS UserActivity cascade;
 DROP TABLE IF EXISTS jobs cascade;
 
-CREATE TABLE UserAccount (
-  UserAccount_id INT GENERATED ALWAYS AS IDENTITY,
+CREATE TABLE userAccount (
+  userAccount_id INT GENERATED ALWAYS AS IDENTITY,
   username VARCHAR(30) NOT NULL,
   password VARCHAR(100) NOT NULL,
-  PRIMARY KEY (UserAccount_id)
+  PRIMARY KEY (userAccount_id)
 );
 CREATE TABLE token (
   token_id INT GENERATED ALWAYS AS IDENTITY,
@@ -26,10 +26,10 @@ CREATE TABLE events (
   PRIMARY KEY (events_id)
 );
 CREATE TABLE recyclingObject (
-  Item_id INT GENERATED ALWAYS AS IDENTITY, 
-  ItemName VARCHAR(30) NOT NULL,
-  ItemDescription VARChar (255) NOT NULL,
-  PRIMARY KEY (Item_id)
+  item_id INT GENERATED ALWAYS AS IDENTITY, 
+  itemName VARCHAR(30) NOT NULL,
+  itemDescription VARCHAR (255) NOT NULL,
+  PRIMARY KEY (item_id)
 );
 CREATE TABLE jobs(
   jobs_id INT GENERATED ALWAYS AS IDENTITY,
@@ -39,13 +39,13 @@ CREATE TABLE jobs(
   job_contactInfo VARCHAR(50) NOT NULL,
   PRIMARY KEY (jobs_id)
 );
-CREATE TABLE UserActivity (
-  Activity_id INT GENERATED ALWAYS AS IDENTITY,
-  UserAccount_id INT NOT NULL,
+CREATE TABLE userActivity (
+  activity_id INT GENERATED ALWAYS AS IDENTITY,
+  userAccount_id INT NOT NULL,
   jobs_id INT,
-  Item_id INT,
-  PRIMARY KEY (Activity_id),
-  FOREIGN KEY (UserAccount_id) REFERENCES UserAccount(UserAccount_id),
+  item_id INT,
+  PRIMARY KEY (activity_id),
+  FOREIGN KEY (userAccount_id) REFERENCES userAccount(userAccount_id),
   FOREIGN KEY (jobs_id) REFERENCES jobs(jobs_id),
-  FOREIGN KEY (Item_id) REFERENCES recyclingObject(Item_id)
+  FOREIGN KEY (item_id) REFERENCES recyclingObject(item_id)
 );

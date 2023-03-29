@@ -4,8 +4,8 @@ const item_controller = require('../controllers/item_controller');
 const itemRouter = Router();
 
 itemRouter.get('/', item_controller.index);
-itemRouter.get('/:id', item_controller.show);
 itemRouter.post('/', item_controller.create);
+itemRouter.get('/:id', item_controller.show);
 itemRouter.patch('/:id', item_controller.update);
 itemRouter.delete('/:id', item_controller.destroy);
 
