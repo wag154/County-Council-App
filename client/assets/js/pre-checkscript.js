@@ -18,14 +18,15 @@ const removeLocal = () =>{
 const DisplayUser = async()=>{
   username.style.display = "block"
   button.style.border = "none"
-  button.textContent = "Logout?"
+  button.textContent = "Logout"
   button.href = "#"
   button.addEventListener("click",()=>{
     removeLocal()
   })
   username.textContent=`Username: ${localStorage.getItem("username")}`
   username.classList.add("disUsername");
-
+  displayNew.width  = "10%;"
+  container.classList.add("UserContainer")
   container.appendChild(username);
   container.appendChild(button);
   displayNew.appendChild(container);

@@ -181,3 +181,10 @@ li{
     position: absolute;
     top:20%;
 }
+.UserContainer{
+    width : 100%;
+    height : 100%;
+    display:flex;
+    justify-content: end;
+    align-items: center;
+}
