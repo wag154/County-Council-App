@@ -8,7 +8,9 @@ const EventDesc = document.querySelector("#event-title p");
 const signUpForm  = document.querySelector(".centreDis form");
 const recyclingParent = document.querySelector("#displayTest")
 
-
+function goSighUp(){
+    window.location.assign("./assets/views/signup.html")
+}
 
 let login = false;
 let currentDotMenuIndex = 0;
@@ -20,12 +22,6 @@ const DisplayJobs = async(data)=>{
            const JobHeader = document.createElement("h1");
            const jobDescription = document.createElement("p1");
            const applyBtn = document.createElement("button")
-/*
-            jobConatiner.style = "style";
-            JobHeader.style = "style";
-            jobDescription.style = "style";
-            applyBtn.style = "style"
-*/
            jobDescription.innerHTML = `${e[job_pay]}<br>${e.job_description}<br>${e.job_contactInfo}`;
            jobContainer.appendChild(JobHeader);
            jobContainer.appendChild(jobDescription);
@@ -135,15 +131,6 @@ const getEvents = async () => {
 	}
 };
 getEvents();
-async function getEventList() {
-	try {
-		const res = await fetch('');
-		const data = await res.json();
-		return data.result();
-	} catch {
-		console.log('Unable to get event list');
-	}
-}
 const register = async(username,password)=>{
     const options = {
         method : "POST",
@@ -207,17 +194,6 @@ const displayEvents = async(data)=>{
     }
     eventTitle.textContent = EventName[currentDotMenuIndex];
     EventDesc.innerHTML = `${EventDescription[currentDotMenuIndex]} <br> Time :${eventTime[currentDotMenuIndex]} <br> Place: ${eventPlace[currentDotMenuIndex]}` ;
-}
-getEvents()
-async function getEventList(){
-    try{
-        const res = await fetch("")
-        const data = await res.json()
-        return data.result()
-    }
-    catch {
-        console.log("Unable to get event list")
-    }
 }
 if(signUpForm) {
     signUpForm.addEventListener("submit",getInfo)
