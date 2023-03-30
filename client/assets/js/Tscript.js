@@ -6,6 +6,13 @@ const EventDesc = document.querySelector('#event-title p');
 const signUpForm = document.querySelector('.centreDis form');
 const recyclingParent = document.querySelector('#displayTest');
 
+const runConsoleLog = async()=>{
+	try{
+		console.log("local storage username")
+	}
+	catch{console.log("Unable to get username")}
+}
+runConsoleLog()
 let login = false;
 let currentDotMenuIndex = 0;
 

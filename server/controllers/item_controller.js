@@ -8,7 +8,16 @@ async function index(req, res) {
 		res.status(500).json({ message: err.message });
 	}
 }
+async function getItemsByCat (req,res){
+try{
+	const catItems = await Items.getItemsByCat(req.params.category);
+	res.status(200).json(catItems)
+}
+catch(e){
+	res.status(500).json ({message: e.message })
+}
 
+}
 async function show(req, res) {
 	try {
 		const id = parseInt(req.params.id);
@@ -52,4 +61,4 @@ async function destroy(req, res) {
 	}
 }
 
-module.exports = { index, show, create, update, destroy };
+module.exports = { index, show, create, update, destroy ,getItemsByCat};

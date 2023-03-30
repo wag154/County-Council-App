@@ -23,8 +23,8 @@ const getRecycleList = async () => {
 		const resp = await fetch(baseURL + 'items');
 		if (resp.ok) {
 			const data = await resp.json();
+			console.log(data)
 			DisplayRecycleList(data);
-			console.log(data);
 		}
 	} catch {
 		console.log('unable to get any events');

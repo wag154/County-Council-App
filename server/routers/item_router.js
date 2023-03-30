@@ -6,6 +6,7 @@ const itemRouter = Router();
 
 itemRouter.get('/', item_controller.index);
 itemRouter.post('/', item_controller.create);
+itemRouter.get("cat/:category",item_controller.getItemsByCat);
 itemRouter.get('/:id', item_controller.show);
 itemRouter.patch('/:id', item_controller.update);
 itemRouter.delete('/:id', item_controller.destroy);
