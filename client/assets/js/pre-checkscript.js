@@ -5,10 +5,15 @@ username.style.display = "none"
 let display = true;
 const container = document.createElement("div")
 const removeLocal = () =>{
-  confirm("Do you want to log out?")
-  console.log("Removing username")
-  localStorage.removeItem("username")
-  location.reload()
+  if (confirm("Do you want to log out?") == true){
+    console.log("Removing username")
+    localStorage.removeItem("username")
+    location.reload()
+  }
+  else {
+    alert("Not logged out")
+  }
+  
 }
 const DisplayUser = async()=>{
   username.style.display = "block"
@@ -27,10 +32,11 @@ const DisplayUser = async()=>{
 }
 if (localStorage.getItem("username")){
   DisplayUser()
+  button.removeEventListener("click");
 }
 else if (!localStorage.getItem("username")){
   console.log("User not signed in")
   button.addEventListener("click",()=>{
-
+    window.location.assign("./assets/views/signup.html")
   })
 }
