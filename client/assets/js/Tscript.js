@@ -208,20 +208,6 @@ const displayEvents = async(data)=>{
     eventTitle.textContent = EventName[currentDotMenuIndex];
     EventDesc.innerHTML = `${EventDescription[currentDotMenuIndex]} <br> Time :${eventTime[currentDotMenuIndex]} <br> Place: ${eventPlace[currentDotMenuIndex]}` ;
 }
-const getEvents = async()=>{
-    try{
-       const resp = await fetch( baseURL + 'events')
-       if (resp.ok){
-        const data = await resp.json();
-        displayEvents(data)
-        console.log(data)
-        newsFunction(data)
-       }
-    }
-    catch {
-        console.log("unable to get events")
-    }
-}
 getEvents()
 async function getEventList(){
     try{
@@ -235,24 +221,6 @@ async function getEventList(){
 }
 if(signUpForm) {
     signUpForm.addEventListener("submit",getInfo)
-}
-
-if(btnEvents){
-    btnEvents.addEventListener('click', () => {
-        window.location.href = "./assets/views/events.html"
-    })
-}
-
-if(btnRecycle) {
-    btnRecycle.addEventListener('click', () => {
-        window.location.href = "./assets/views/recycles.html"
-    })
-}
-
-if(btnJob) {
-    btnJob.addEventListener('click', () => {
-        window.location.href = "./assets/views/jobs.html"
-    })
 }
 var EventListCount = 0
 const carouselInnerDiv = document.getElementById("carousel-inner")

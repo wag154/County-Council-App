@@ -5,38 +5,21 @@ var recycleListCount = 0;
 document.getElementsByTagName("BODY")[0].style.display = "none";
 
 const storeLink= async(id)=>{
-	if (!localStorage.getItem("username")){
-		window.location.assign("../views/sighnup.html")
-	}
-	try{
-		const resp = await fetch(baseURL+"/user/linkItem"+id+localStorage.getItem("username"))
-		if(resp.ok){
-			const data = await resp.json()
-		}
-	}
-	catch{
-		console.log("Unable to link items")
+if (!localStorage.getItem("username")){
+	window.location.assign("../views/sighnup.html")
+}
+try{
+	const resp = await fetch(baseURL+"/user/linkItem"+id+localStorage.getItem("username"))
+	if(resp.ok){
+		const data = await resp.json()
 	}
 }
- 
+catch{
+	console.log("Unable to link items")
+}
+}
+
 const DisplayRecycleList = (data) => {
-	// data.forEach((element) => {
-	// 	const listNameDiv = document.querySelector('.listNameDiv');
-	// 	if (recycleListCount > 0) {
-	// 		var listNameDivClone = listNameDiv.cloneNode(true);
-	// 		// listNameDivClone.addEventListener("click",()=>{
-	// 		// 	const ID = element.id;
-	// 		//	storeLink(ID)
-	// 		// })
-	// 		listNameDivClone.innerHTML = `<strong>${element.name}</strong><br> ${element.description}`;
-	// 		listNameDivClone.name = element.name;
-	// 		recycleList.appendChild(listNameDivClone);
-	// 	} else {
-	// 		recycleListCount++;
-	// 		listNameDiv.innerHTML = `<strong>${element.name}</strong><br> ${element.description}`;
-	// 		listNameDiv.name = element.name;
-	// 	}
-	// })
 
 	data.forEach((event) => {
 		var card = document.querySelector('.card');
@@ -61,7 +44,16 @@ const getRecycleList = async () => {
 		if (resp.ok) {
 			const data = await resp.json();
 			console.log(data)
-			DisplayRecycleList(data);
+			var tempCate = []
+			const filteredData = data.filter((event) => {
+				if (!tempCate.includes(event.category)) {
+					tempCate.push(event.category)
+					return event
+				}
+			});
+			console.log('hhhhhh',filteredData)
+
+			DisplayRecycleList(filteredData);
 			document.getElementsByTagName("BODY")[0].style.display = "block";
 
 		}
@@ -71,14 +63,8 @@ const getRecycleList = async () => {
 };
 getRecycleList();
 function id_on_click(name){
-	// modalBody.innerHTML = null;
-	// 	var listItem = document.createElement('p');
-	// 	listItem.innerHTML = `${name}` + ' collection on ' + randomDay() + ' - every week.'
-	// 	modalBody.appendChild(listItem);
-	// // });
+
 	getItemsByCategory(name)
-	// const d = [{"name": "item1"}, {"name": "item1"}, {"name": "item3"}, {"name": "item1"}]
-	// showModelData(d, name);
 }
 async function getItemsByCategory(category) {
 	try {
@@ -116,9 +102,3 @@ const randomDay = () => {
 	const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 	return days[Math.floor(Math.random() * days.length)];
 };
-=======
-	const randomDay = () => {
-		const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-		return days[Math.floor(Math.random() * days.length)];
-	};
-}
