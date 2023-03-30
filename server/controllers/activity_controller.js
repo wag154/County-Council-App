@@ -1,5 +1,4 @@
 const User = require ("../models/user_model");
-const Jobs = require ("../models/jobs_model");
 
 const linkUserAndJob = async(req,res)=>{
   const getUserID = User.getUserByID(req.params.username);
@@ -10,8 +9,10 @@ const linkUserAndJob = async(req,res)=>{
 }
 const linkUserAndItem = async(req,res)=>{
   const getUserId = User.getUserByID(req.params.username);
-  getUserId =parseInt(req.params.itemID);
-
+  getUserId =parseInt(getUserId);
+  const itemID = parseInt(req.params.itemid)
+  const checker = User.insertUserAndItemID(getUserId,itemID)
+  res.send(checker)
 }
 
 
