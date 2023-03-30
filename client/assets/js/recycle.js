@@ -93,10 +93,10 @@ function showModelData(items, category) {
 	document.querySelector('.modal-title').innerHTML = category;
 	var categoryTag = document.createElement('p');
 	categoryTag.innerHTML =
-		'The ' + category + ' items collection - ' + randomDay() + ' every week';
+		category + ' items collection - ' + randomDay() + ' every week';
 	modalBody.appendChild(categoryTag);
 	const h6 = document.createElement('h6');
-	h6.innerHTML = 'Below items can recycle.';
+	h6.innerHTML = 'Here are some of the ' + category + ' items';
 	h6.classList.add('mt-3');
 	modalBody.appendChild(h6);
 	items.forEach((item) => {
