@@ -19,6 +19,5 @@
     "pg": "^8.10.0",
     "supertest": "^6.3.3",
     "uuidv4": "^6.2.13"
-  },
-  "devDependencies": {}
+  }
 }
