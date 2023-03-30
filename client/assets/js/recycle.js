@@ -2,23 +2,24 @@ const baseURL = 'https://council-app-backend.onrender.com/';
 const recycleList = document.getElementById('recycleList');
 const modalBody = document.getElementById('modal-body');
 var recycleListCount = 0;
-document.getElementsByTagName("BODY")[0].style.display = "none";
+document.getElementsByTagName('BODY')[0].style.display = 'none';
 
-const storeLink= async(id)=>{
-	if (!localStorage.getItem("username")){
-		window.location.assign("../views/sighnup.html")
+const storeLink = async (id) => {
+	if (!localStorage.getItem('username')) {
+		window.location.assign('../views/sighnup.html');
 	}
-	try{
-		const resp = await fetch(baseURL+"/user/linkItem"+id+localStorage.getItem("username"))
-		if(resp.ok){
-			const data = await resp.json()
+	try {
+		const resp = await fetch(
+			baseURL + '/user/linkItem' + id + localStorage.getItem('username')
+		);
+		if (resp.ok) {
+			const data = await resp.json();
 		}
+	} catch {
+		console.log('Unable to link items');
 	}
-	catch{
-		console.log("Unable to link items")
-	}
-}
- 
+};
+
 const DisplayRecycleList = (data) => {
 	// data.forEach((element) => {
 	// 	const listNameDiv = document.querySelector('.listNameDiv');
@@ -51,7 +52,6 @@ const DisplayRecycleList = (data) => {
 			card.children[0].children[0].innerHTML = event.category;
 			card.children[0].children[1].innerHTML = event.description;
 			card.children[0].children[3].name = event.category;
-
 		}
 	});
 };
@@ -60,23 +60,22 @@ const getRecycleList = async () => {
 		const resp = await fetch(baseURL + 'items');
 		if (resp.ok) {
 			const data = await resp.json();
-			console.log(data)
+			console.log(data);
 			DisplayRecycleList(data);
-			document.getElementsByTagName("BODY")[0].style.display = "block";
-
+			document.getElementsByTagName('BODY')[0].style.display = 'block';
 		}
 	} catch {
 		console.log('unable to get any events');
 	}
 };
 getRecycleList();
-function id_on_click(name){
+function id_on_click(name) {
 	// modalBody.innerHTML = null;
 	// 	var listItem = document.createElement('p');
 	// 	listItem.innerHTML = `${name}` + ' collection on ' + randomDay() + ' - every week.'
 	// 	modalBody.appendChild(listItem);
 	// // });
-	getItemsByCategory(name)
+	getItemsByCategory(name);
 	// const d = [{"name": "item1"}, {"name": "item1"}, {"name": "item3"}, {"name": "item1"}]
 	// showModelData(d, name);
 }
@@ -87,28 +86,22 @@ async function getItemsByCategory(category) {
 			const data = await resp.json();
 			showModelData(data, category);
 		}
-	} catch {
-
-	}
+	} catch {}
 }
 function showModelData(items, category) {
 	modalBody.innerHTML = null;
-	document.querySelector('.modal-title').innerHTML = category
+	document.querySelector('.modal-title').innerHTML = category;
 	var categoryTag = document.createElement('p');
-		categoryTag.innerHTML =
-			'The ' +
-			category +
-			' items collection - ' +
-			randomDay() +
-			' every week';
-		modalBody.appendChild(categoryTag);
-	const h6 = document.createElement('h6')
-	h6.innerHTML = 'Below items can recycle.'
-	h6.classList.add('mt-3')
-	modalBody.appendChild(h6)
+	categoryTag.innerHTML =
+		'The ' + category + ' items collection - ' + randomDay() + ' every week';
+	modalBody.appendChild(categoryTag);
+	const h6 = document.createElement('h6');
+	h6.innerHTML = 'Below items can recycle.';
+	h6.classList.add('mt-3');
+	modalBody.appendChild(h6);
 	items.forEach((item) => {
 		var listItem = document.createElement('li');
-		listItem.innerHTML = item.name
+		listItem.innerHTML = item.name;
 		modalBody.appendChild(listItem);
 	});
 }
@@ -116,9 +109,3 @@ const randomDay = () => {
 	const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 	return days[Math.floor(Math.random() * days.length)];
 };
-=======
-	const randomDay = () => {
-		const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-		return days[Math.floor(Math.random() * days.length)];
-	};
-}
