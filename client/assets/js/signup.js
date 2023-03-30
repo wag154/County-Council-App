@@ -1,6 +1,6 @@
 const btnJob = document.getElementById("btn-job");
 const eventTitle = document.getElementById("event-title");
-const signUpForm  = document.querySelector(".centreDis form");
+const signUpForm  = document.querySelector("#disForm");
 
 let ExistsChecker = false;
 const userLogin = async(Username,Password) =>{
@@ -69,18 +69,22 @@ let login = false;
 const userSwitch = async() =>{
 
   const title = document.querySelector("#RegHeader")
-  const button = document.querySelector("#SignupSwitcher")
-
+  const button = document.querySelector("#SignupSwitcher");
+  const anotherButton = document.querySelector("#submitBtn")
   if (login == false){
       title.textContent = "Login";
       button.textContent = "Want to Sign Up?";
+      anotherButton.value = "Login"
       login = true;
   }
   else{
       title.textContent = "Sign Up";
       button.textContent = "Want to Login?";
+      anotherButton.value = "Sigh Up"
       login = false;
   }
 }
 
-signUpForm.addEventListener("submit",getInfo)
+if (signUpForm) {
+  signUpForm.addEventListener("submit",getInfo)
+}
