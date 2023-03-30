@@ -193,11 +193,11 @@ li{
 }
 
 .news-container {
-    background-color: #9BC4CB;
+    background-color: #deecee;
     width: 70%;
     margin: auto;
     border: 5px solid #C0E8F9;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: inset 5px 5px 5px #073b51;
+    box-shadow: inset 5px 5px 5px #147199;
 }
