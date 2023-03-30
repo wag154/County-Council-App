@@ -33,6 +33,7 @@ describe('/jobs', () => {
 		const requestBody = {
 			title: 'test',
 			description: 'test',
+			pay: 'test',
 			contactInfo: 'test',
 		};
 		const response = await request(app).post('/jobs').send(requestBody);

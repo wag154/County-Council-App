@@ -1,22 +1,31 @@
 const User = require('../models/user_model');
 
-const create = async (req, res) => {
+const userLogin = async (req, res) => {
+	console.log("Hello")
+	try {
+		const getLogin = await User.login(req.params.username, red.params.password);
+		res.send(getLogin).status(200);
+	} catch(e) {
+			
+		res.json({message:e.message}).status(400);
+	}
+};
+async function create(req, res) {
 	try {
 		const createUser = await User.create(req.body.username, req.body.password);
-		res.send(createUser).status();
-	} catch {
-		console.log('Unable to create new user');
+		res.json(createUser).status(200);
+	} catch(e) {
+		res.json({message : e.message}).status(404)
 	}
-};
-
-const userLogin = async (req, res) => {
+}
+async function remove(req, res) {
 	try {
-		const getLogin = await User.login(req.body.username, req.body.password);
-		res.send(getLogin).status();
-	} catch {
-		(e) => console.log(e);
-		res.status(400);
+		const getID = await User.getUserByID(req.body.name);
+		const deleted = await User.destroy(getID);
+		res.send(200);
+	} catch(e) {
+		res.status(402).json({message: e.message})
 	}
-};
+}
 
-module.exports = { create, userLogin };
+module.exports = { create, userLogin, remove };

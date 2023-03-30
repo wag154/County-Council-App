@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS events cascade;
 DROP TABLE IF EXISTS recyclingObject cascade;
 DROP TABLE IF EXISTS UserActivity cascade;
 DROP TABLE IF EXISTS jobs cascade;
+DROP TABLE IF EXISTS token;
 
 CREATE TABLE userAccount (
   userAccount_id INT GENERATED ALWAYS AS IDENTITY,
@@ -29,6 +30,7 @@ CREATE TABLE recyclingObject (
   item_id INT GENERATED ALWAYS AS IDENTITY, 
   itemName VARCHAR(30) NOT NULL,
   itemDescription VARCHAR (255) NOT NULL,
+  itemCategory VARCHAR(100) NOT NULL,
   PRIMARY KEY (item_id)
 );
 CREATE TABLE jobs(

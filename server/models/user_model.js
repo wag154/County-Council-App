@@ -15,36 +15,51 @@ class User {
 	}
 
 	static async check(name, password) {
-		const UsernameCheck = db.query(
-			"SELECT * FROM UserAccount WHERE username = '$1' AND password = '$2'",
-			[name, password]
-		);
-		if (UsernameCheck.rows.length === 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	static async create(name, password) {
-		const isNewAccount = check(name, password);
-		if (isNewAccount == true) {
-			const add = await db.query(
-				'INSERT INTO UserAccount VALUES ($1,$2) RETURNING *;',
+		try{
+			const UsernameCheck = await db.query(
+				"SELECT * FROM UserAccount WHERE username = $1 AND password = $2",
 				[name, password]
 			);
-			return add.rows.map((e) => User(e));
-		} else {
-			console.log('Username already exists');
-			return 'Already Exists';
+			if (UsernameCheck.rows.length == 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		catch{
+			console.log("Check not working")
+		}
+	}
+	static async create(name, password) {
+		console.log(name,password)
+		try{
+			const isNewAccount = await User.check(name, password);
+			if (isNewAccount === true) {
+				const add = await db.query(
+					"INSERT INTO UserAccount(username,password) VALUES ($1,$2) RETURNING *;",[name, password]);
+				return add.rows.map((e) => new User(e));
+			} else {
+				console.log('Username already exists');
+				return 'Already Exists';
+			}
+		}
+		catch(e){
+			console.log("Unable to Create",e)
 		}
 	}
 	static async login(name, password) {
-		const checker = db.query(
-			'SELECT * FROM userAccount WHERE username = $1 AND password = $2 RETURNING *;',
-			[name, password]
-		);
-		return add.rows.map((e) => User(e));
+		try{
+			const checker = await db.query(
+				'SELECT * FROM userAccount WHERE username = $1 AND password = $2 RETURNING *;',
+				[name, password]
+			);
+			if (checker.rows.length == 0){
+				return checker.rows[0];
+			};
+		}
+		catch{
+			throw error ("Unable to check login")
+		}
 	}
 
 	async destroy(id) {
