@@ -56,16 +56,12 @@ Events Page:
 
 The final point from the brief was to do with the sharing of information about skills, as well as restoring Florin to a clean environment. This page contains a list of local events such as crafting workshops, as well as events based around recycling and cleaning areas of the town.
 
-### Future Features
-
-* ...
-
 ## When opening up the application
 
 The application requires the use of node and npm. To install the application locally, clone the repository and run the following commands:
 
 * <span style="color:#428A5B;font-weight:bold">npm install</span>
-* <span style="color:#428A5B;font-weight:bold">npm install -d (to install dev dependencies)</strong>
+* <span style="color:#428A5B;font-weight:bold">npm install -d (to install dev dependencies)</span>
 
 ## To view the application in your browser
 
