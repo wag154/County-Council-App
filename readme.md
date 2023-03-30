@@ -1,4 +1,4 @@
-# Florin Council App
+# <span style="color:green;font-weight:bold">Florin Council App</span>
 
 ## Description
 
@@ -18,7 +18,6 @@ Our project was devised on and managed using Trello. The Trello board can be vie
   
 * "Florin is surrounded by swathes of beautiful countryside, where many great and legendary historical events have taken place. Unfortunately, much of this is becoming increasingly destitute and our local landscape is becoming unrecognisable."
   
-
 
 ### Wireframes and Design
 
@@ -65,19 +64,19 @@ The final point from the brief was to do with the sharing of information about s
 
 The application requires the use of node and npm. To install the application locally, clone the repository and run the following commands:
 
-* npm install
-* npm install -d (to install dev dependencies)
+* <span style="color:green;font-weight:bold">npm install</span>
+* <span style="color:green;font-weight:bold">npm install -d (to install dev dependencies)</strong>
 
 ## To view the application in your browser
 
-The backend of the application is hosted using render.com so no server is required to start up the app. Instead you just need to use the in-built 'Go Live' feature in VS Code to see it running in the browser. Then follow the instructions of the below screenshot, clicking on the client folder in order to access the application using localHost.
+The backend of the application is hosted using render.com so no server is required to start up the app. Instead you just need to <span style="color:green;font-weight:bold">use the in-built 'Go Live' feature in VS Code</span> to see it running in the browser. Then follow the instructions of the below screenshot, clicking on the client folder in order to access the application using localHost.
 
 ![Go Live](./Screenshot%202023-03-30%20at%2014.47.21.png)
 
 
 ## Credits
 
-The app was built by:
+<span style="color:yellow;font-weight:bold">The app was built by:</span>
 
 * [Jack](https://github.com/wag154)
 * [Joe](https://github.com/woejaddicor)
