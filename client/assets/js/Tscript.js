@@ -8,7 +8,9 @@ const EventDesc = document.querySelector("#event-title p");
 const signUpForm  = document.querySelector(".centreDis form");
 const recyclingParent = document.querySelector("#displayTest")
 
-
+function goSighUp(){
+    window.location.assign("./assets/views/signup.html")
+}
 
 let login = false;
 let currentDotMenuIndex = 0;
@@ -208,21 +210,6 @@ const displayEvents = async(data)=>{
     eventTitle.textContent = EventName[currentDotMenuIndex];
     EventDesc.innerHTML = `${EventDescription[currentDotMenuIndex]} <br> Time :${eventTime[currentDotMenuIndex]} <br> Place: ${eventPlace[currentDotMenuIndex]}` ;
 }
-const getEvents = async()=>{
-    try{
-       const resp = await fetch( baseURL + 'events')
-       if (resp.ok){
-        const data = await resp.json();
-        displayEvents(data)
-        console.log(data)
-        newsFunction(data)
-       }
-    }
-    catch {
-        console.log("unable to get events")
-    }
-}
-getEvents()
 async function getEventList(){
     try{
         const res = await fetch("")
