@@ -5,8 +5,26 @@ class User {
 		this.username = username;
 		this.password = password;
 	}
+	static async insertUserAndItemID(username,itemID){
+		try{
+			const NewInsert = await db.query("INSERT INTO UserActivity(userAccount_id,item_id)VALUES($1,$2)RETURNING * ;",[username,itemID])
+			return NewInsert.rows[0]
+		}
+		catch{
+			console.log("")
+		}
+	}
+	static async InsertUserAndJobID(username,jobID){
+		try{
 
-	static async getUserByID(name) {
+			const Insert = await db.query("INSERT INTO UserActivity(userAccount_id,jobs_id) VALUES ($1,$2) RETURNING *;",[username,jobID])
+			return Insert.rows[0];
+		}
+		catch{
+			console.log("Unable to insert info")
+		}
+		}
+		static async getUserByID(name) {
 		const getID = await db.query(
 			'SELECT UserAccount_id FROM UserAccount WHERE username = $1',
 			[name]

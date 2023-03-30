@@ -170,7 +170,6 @@ const getEvents = async () => {
 		}
 	} catch {
 		console.log('unable to get events');
-		alert('Unable to get events');
 	}
 };
 getEvents();
