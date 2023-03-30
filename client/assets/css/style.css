@@ -1,9 +1,7 @@
 .banner-section-img {
     width: 100%;
-    aspect-ratio: 3/0.8;
-    object-fit:cover;
-    height: 100%;
-    opacity: 20%;
+    aspect-ratio: 3/0.5;
+    object-fit:cover
 }
 a{
     text-decoration: none;

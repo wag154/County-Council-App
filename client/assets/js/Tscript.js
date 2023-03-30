@@ -181,10 +181,12 @@ const displayEvents = async(data)=>{
 }
 const getEvents = async()=>{
     try{
-       const resp = await fetch("/events/")
+       const resp = await fetch('http://127.0.0.1:3000/events')
        if (resp.ok){
         const data = await resp.json();
         displayEvents(data)
+        console.log(data)
+        newsFunction(data)
        }
     }
     catch {
@@ -192,6 +194,7 @@ const getEvents = async()=>{
         alert("Unable to get events")
     }
 }
+getEvents()
 
 async function getEventList(){
     try{
@@ -204,15 +207,53 @@ async function getEventList(){
     }
 }
 
-signUpForm.addEventListener("submit",getInfo)
+if(signUpForm) {
+    signUpForm.addEventListener("submit",getInfo)
 
-btnEvents.addEventListener('click', () => {
-window.location.href = "./assets/views/events.html"
-})
+}
+
+if(btnEvents){
+    btnEvents.addEventListener('click', () => {
+        window.location.href = "./assets/views/events.html"
+    })
+}
+
+
+if(btnRecycle) {
 btnRecycle.addEventListener('click', () => {
     window.location.href = "./assets/views/recycles.html"
 })
+}
+
+if(btnJob) {
 btnJob.addEventListener('click', () => {
     window.location.href = "./assets/views/jobs.html"
 })
-eventTitle.innerText = "Join new football team"
+}
+var EventListCount = 0
+const carouselInnerDiv = document.getElementById("carousel-inner")
+function newsFunction(data) {
+    data.forEach(event => {
+        var carouselItemDivChild = document.querySelector(".carousel-item")
+    
+        if (EventListCount > 0) {
+            
+            var carouselItemDivChildClone = carouselItemDivChild.cloneNode(true)
+            carouselItemDivChildClone.children[1].innerHTML = event.name
+            carouselItemDivChildClone.children[2].innerHTML =  'Start Date: ' + event.time
+            carouselItemDivChildClone.children[3].innerHTML =  'Place: ' + event.place
+            carouselItemDivChildClone.children[3].innerHTML =  event.description
+    
+            carouselItemDivChildClone.classList.remove("active")
+            carouselInnerDiv.appendChild(carouselItemDivChildClone)
+            
+        }
+        else {
+            EventListCount++
+            carouselItemDivChild.children[1].innerHTML = event.name
+            carouselItemDivChild.children[2].innerHTML =  'Start Date: ' + event.time
+            carouselItemDivChild.children[3].innerHTML =  'Place: ' + event.place
+            carouselItemDivChild.children[3].innerHTML =  event.description        }
+        
+    })
+}
