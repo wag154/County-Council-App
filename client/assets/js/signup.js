@@ -6,7 +6,7 @@ let ExistsChecker = false;
 const userLogin = async(Username,Password) =>{
   try{
     const resp = await fetch(`https://council-app-backend.onrender.com/user/login/${Username}&${Password}`)
-      alert("Logged in!")
+      confirm("Logged in!")
       if (resp.ok){
           const data = await resp.json();
           console.log(data)
@@ -39,7 +39,8 @@ const register = async(username,password)=>{
 
         }
         else{
-          alert("Successfully registered!")
+          ExistsChecker = false;
+          confirm("Successfully registered!")
         }
         }
   }catch{
@@ -57,7 +58,7 @@ const getInfo = (e) =>{
       localStorage.setItem("username",e.target.Username.value);
   }
   if (ExistsChecker == false){
-    //window.location.assign("../../index.html")
+    window.location.assign("../../index.html")
     console.log()
   }
 
