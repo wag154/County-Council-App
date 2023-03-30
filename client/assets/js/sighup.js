@@ -5,7 +5,7 @@ const signUpForm  = document.querySelector(".centreDis form");
 let ExistsChecker = false;
 const userLogin = async(Username,Password) =>{
   try{
-    const resp = await fetch(`http://127.0.0.1:3000/user/login/${Username}&${Password}`)
+    const resp = await fetch(`https://council-app-backend.onrender.com/user/login/${Username}&${Password}`)
       alert("Logged in!")
       if (resp.ok){
           const data = await resp.json();
@@ -30,7 +30,7 @@ const register = async(username,password)=>{
       body : JSON.stringify(data)
   }
   try{
-      const resp = await fetch ("http://127.0.0.1:3000/user/register",options);
+      const resp = await fetch ("https://council-app-backend.onrender.com/user/register",options);
       if (resp.ok){
         const data = await resp.json();
         if (data == "Already Exists"){

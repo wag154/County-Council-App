@@ -1,4 +1,4 @@
-const baseURL = "http://127.0.0.1:3000/"
+const baseURL = "https://council-app-backend.onrender.com/"
 const recycleList = document.getElementById('recycleList')
 const modalBody = document.getElementById('modal-body')
 var recycleListCount = 0
@@ -9,7 +9,7 @@ const DisplayRecycleList = (data) =>{
         const listNameDiv = document.querySelector(".listNameDiv")
         if (recycleListCount > 0) {
             var listNameDivClone = listNameDiv.cloneNode(true)
-            listNameDivClone.innerHTML = element.name
+            listNameDivClone.innerHTML = `<strong>${element.name}</strong><br> ${element.description}`
             listNameDivClone.id = element.id
             recycleList.appendChild(listNameDivClone)        
         }
