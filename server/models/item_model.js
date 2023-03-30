@@ -8,13 +8,16 @@ class Items {
 		this.category = itemcategory;
 	}
 	static async getCat(cat) {
-		const resp = await db.query("SELECT * FROM recyclingObject WHERE itemCategory = $1",[cat])
-		if (resp.rows.length == 0){
-			return error ("Unable to get categories")
-		}
-		else {
-			return resp.rows.map((item) => new Items(item));
-		}
+		try{
+				const resp = await db.query("SELECT * FROM recyclingObject WHERE itemCategory = $1;",[cat])
+				if (resp.rows.length == 0){	
+					return error ("Unable to get categories")
+				}
+				else {
+					return resp.rows.map((item) => new Items(item));
+				}
+			}
+		catch {console.log("Unable to getCat")}
 	}
 	static async getAll() {
 		const response = await db.query('SELECT * FROM recyclingObject;');
