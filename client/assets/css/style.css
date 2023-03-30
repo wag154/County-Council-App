@@ -1,8 +1,183 @@
 .banner-section-img {
     width: 100%;
-    aspect-ratio: 3/0.5;
-    object-fit:cover
+    aspect-ratio: 3/0.8;
+    height: 20%;
+    opacity: 20%;
+    object-fit:cover;
+}
+body{
+    background-color: white;
 }
 a{
     text-decoration: none;
+    transition: .5s;
+}
+#Menu{
+    width : 99vw;
+    height : 6vh;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+}
+#EventBody{
+    width : 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+nav ul  {
+    margin-right:  325px;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+}
+li{
+    transition: .5s;
+    margin : 5px
+}
+ li:hover{
+    transform: scale(1.1);
+}
+#signup:hover{
+    transform: scale(1.1);
+}
+.EventBox{
+    width : 20vw;
+    height : 30vh;
+    display: flex;
+    flex-direction: column;
+}
+#govIcon{
+    height : 60px;
+    width : auto;
+}
+.JobBox{
+    width :20vw;
+    height :20vh;
+    margin:5px;
+    margin-bottom: 30px;
+    border:1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+#JobDisplay{
+    width : calc(100vw -5px);
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+ button {
+    background-color : white;
+    border:none;
+    text-decoration: none;
+ }
+ #mainBody{
+    width : 100vw;
+    height :92vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .centreDis{
+    background-color: white;
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 90vh;
+    width :40vw;
+    border-radius: 50px;
+    border: 1px solid black;
+ }
+ #SignupSwitcher{
+    font-size: 2em;
+    border-radius: 20px;
+    position: absolute;
+    width: 70%;
+    height:10%;
+    bottom : 20%;
+    left : 15%;
+    transition: 0.2s ease-in-out;
+    border : 1px solid gray;
+ }
+ #SignupSwitcher:hover{
+    transform: scale(1.05);
+ }
+ .space{
+    margin : 10%;
+ }
+ input{
+    text-align: center;
+    border-radius: 10px;
+ }
+ #submitBtn{
+    border-radius: 20px;
+    border: solid gray 1px;
+    background-color: white;
+    transition: 0.5s;
+    font-family: Cambria;
+    font-size: 2.5em;
+    height:10%;
+    width:70%;
+    position: absolute;
+    right:15%;
+    bottom:5%;
+ }
+ #submitBtn:hover{
+    transform: scale(1.05);
+ }
+ #disForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+#govImg{
+    position:absolute;
+    top:5%;
+    height : 15vh;
+    width : auto;
+}
+#userInput{
+    bottom:50%;
+    font-size: 1.5em;
+    position: absolute;
+    left:15%;
+    width : 70%;
+    height:5%;
+}
+#passwordInput{
+    position: absolute;
+    font-size: 1.5em;
+    height:5%;
+    left:15%;
+    width :70%;
+    bottom:35%;
+}
+#usernameLabel{
+    font-size: 2em;
+    width:19%;
+    position: absolute;
+    top:38%;
+    right:41%;
+}
+#passwordLabel{
+    position: absolute;
+    width:19%;
+    bottom: 42%;
+    left:41%;
+    font-size: 2em;
+}
+#RegHeader{
+    position: absolute;
+    top:20%;
 }

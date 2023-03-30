@@ -5,23 +5,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel = "stylesheet" href = "../css/style.css">
-  <title>Document</title>
+  <title>Login/SighUp</title>
 
 </head>
 <body>
   
 <section id = "mainBody">
-  <section class = "centreDis">
-    <h1 id = "RegHeader">Sign Up</h1>
-    <form>
-      <label for = "Username">Username</label>
-      <input type = "text" name = "Username">
-      <label for = "Password">Password</label>
-      <input type = "password" name = "Password">
-      <input type = "submit" value = "submit">
+  <section class = "centreDis"> 
+    <img id = "govImg" src="../images/clipart4620865.png" id= "">
+    <h1 style = "font-size: 3em;" id = "RegHeader">Sign-up</h1>
+    <form id = "disForm">
+     <div class = "space">
+       <label id = "usernameLabel" for = "Username"><strong>Username:</strong></label>
+       <input id = "userInput" type = "text" name = "Username">
+      </div>
+     <div class = "space">
+       <label id= "passwordLabel" for = "Password"><strong>Password:</strong></label>
+       <input id = "passwordInput" type = "password" name = "Password">
+      </div>
+     
+      <input id = "submitBtn" type = "submit" value = "Submit">
     </form>
+    <button id = "SignupSwitcher" onclick="userSwitch()">Login</button>
   </section>
-  <button id = "SignupSwitcher" onclick="userSwitch()">login</button>
 </section>
 
 <script src="../js/sighup.js"></script>
