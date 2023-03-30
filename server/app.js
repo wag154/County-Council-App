@@ -5,6 +5,10 @@ const app = express();
 app.use(cors(
 	methods = ["POST,USE,PATCH,UPDATE"]
 ))
+app.use((req,res,next)=>{
+	console.log(req.method,req.originalUrl)
+	next()
+})
 app.use(express.json());
 // app.use((req,res)=>{
 // 	console.log(req.method,req.originalUrl)

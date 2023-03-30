@@ -60,8 +60,10 @@ const getRecycleList = async () => {
 		const resp = await fetch(baseURL + 'items');
 		if (resp.ok) {
 			const data = await resp.json();
+			console.log(data)
 			DisplayRecycleList(data);
 			document.getElementsByTagName("BODY")[0].style.display = "block";
+
 		}
 	} catch {
 		console.log('unable to get any events');
@@ -114,3 +116,9 @@ const randomDay = () => {
 	const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 	return days[Math.floor(Math.random() * days.length)];
 };
+=======
+	const randomDay = () => {
+		const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+		return days[Math.floor(Math.random() * days.length)];
+	};
+}

@@ -9,6 +9,7 @@ const signUpForm  = document.querySelector(".centreDis form");
 const recyclingParent = document.querySelector("#displayTest")
 
 
+
 let login = false;
 let currentDotMenuIndex = 0;
 
@@ -107,6 +108,41 @@ const userSwitch = async() =>{
         button.textContent = "Sign Up";
         login = false;
     }
+	data.forEach((element) => {
+		EventName.push(element.event_name);
+		EventDescription.push(element.Event_description);
+		eventPlace.push(element.event_place);
+		eventTime.push(element.event_time);
+	});
+	if (!currentDotMenuIndex) {
+		console.log('CurrentDotMenuIndex not defined');
+		return;
+	}
+	eventTitle.textContent = EventName[currentDotMenuIndex];
+	EventDesc.innerHTML = `${EventDescription[currentDotMenuIndex]} <br> Time :${eventTime[currentDotMenuIndex]} <br> Place: ${eventPlace[currentDotMenuIndex]}`;
+};
+const getEvents = async () => {
+	try {
+		const resp = await fetch('https://council-app-backend.onrender.com/events');
+		if (resp.ok) {
+			const data = await resp.json();
+			displayEvents(data);
+			console.log(data);
+			newsFunction(data);
+		}
+	} catch {
+		console.log('unable to get events');
+	}
+};
+getEvents();
+async function getEventList() {
+	try {
+		const res = await fetch('');
+		const data = await res.json();
+		return data.result();
+	} catch {
+		console.log('Unable to get event list');
+	}
 }
 const register = async(username,password)=>{
     const options = {

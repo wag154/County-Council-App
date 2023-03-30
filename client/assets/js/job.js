@@ -36,4 +36,5 @@ const getJobs = async () => {
 		console.log('unable to get any events');
 	}
 };
+console.log("Hello")
 getJobs();
