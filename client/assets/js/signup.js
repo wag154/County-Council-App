@@ -73,12 +73,12 @@ const userSwitch = async() =>{
 
   if (login == false){
       title.textContent = "Login";
-      button.textContent = "Sign Up";
+      button.textContent = "Want to Sign Up?";
       login = true;
   }
   else{
       title.textContent = "Sign Up";
-      button.textContent = "Login";
+      button.textContent = "Want to Login?";
       login = false;
   }
 }
