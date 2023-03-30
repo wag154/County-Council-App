@@ -22,12 +22,6 @@ const DisplayJobs = async(data)=>{
            const JobHeader = document.createElement("h1");
            const jobDescription = document.createElement("p1");
            const applyBtn = document.createElement("button")
-/*
-            jobConatiner.style = "style";
-            JobHeader.style = "style";
-            jobDescription.style = "style";
-            applyBtn.style = "style"
-*/
            jobDescription.innerHTML = `${e[job_pay]}<br>${e.job_description}<br>${e.job_contactInfo}`;
            jobContainer.appendChild(JobHeader);
            jobContainer.appendChild(jobDescription);
@@ -137,15 +131,6 @@ const getEvents = async () => {
 	}
 };
 getEvents();
-async function getEventList() {
-	try {
-		const res = await fetch('');
-		const data = await res.json();
-		return data.result();
-	} catch {
-		console.log('Unable to get event list');
-	}
-}
 const register = async(username,password)=>{
     const options = {
         method : "POST",
@@ -210,36 +195,8 @@ const displayEvents = async(data)=>{
     eventTitle.textContent = EventName[currentDotMenuIndex];
     EventDesc.innerHTML = `${EventDescription[currentDotMenuIndex]} <br> Time :${eventTime[currentDotMenuIndex]} <br> Place: ${eventPlace[currentDotMenuIndex]}` ;
 }
-async function getEventList(){
-    try{
-        const res = await fetch("")
-        const data = await res.json()
-        return data.result()
-    }
-    catch {
-        console.log("Unable to get event list")
-    }
-}
 if(signUpForm) {
     signUpForm.addEventListener("submit",getInfo)
-}
-
-if(btnEvents){
-    btnEvents.addEventListener('click', () => {
-        window.location.href = "./assets/views/events.html"
-    })
-}
-
-if(btnRecycle) {
-    btnRecycle.addEventListener('click', () => {
-        window.location.href = "./assets/views/recycles.html"
-    })
-}
-
-if(btnJob) {
-    btnJob.addEventListener('click', () => {
-        window.location.href = "./assets/views/jobs.html"
-    })
 }
 var EventListCount = 0
 const carouselInnerDiv = document.getElementById("carousel-inner")
