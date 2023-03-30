@@ -2,13 +2,15 @@ const btnJob = document.getElementById("btn-job");
 const eventTitle = document.getElementById("event-title");
 const signUpForm  = document.querySelector(".centreDis form");
 
+let ExistsChecker = false;
 const userLogin = async(Username,Password) =>{
   try{
     const resp = await fetch(`http://127.0.0.1:3000/user/login/${Username}&${Password}`)
       alert("Logged in!")
       if (resp.ok){
           const data = await resp.json();
-      }
+          console.log(data)
+        }
   }
   catch {
       console.log("Unable to login")
@@ -29,10 +31,17 @@ const register = async(username,password)=>{
   }
   try{
       const resp = await fetch ("http://127.0.0.1:3000/user/register",options);
-      alert("Successfully registered!")
       if (resp.ok){
-          const data = await resp.json();
-      }
+        const data = await resp.json();
+        if (data == "Already Exists"){
+          alert("Please enter another username")
+          ExistsChecker = true;
+
+        }
+        else{
+          alert("Successfully registered!")
+        }
+        }
   }catch{
       console.log("Unable to register")
   }
@@ -47,7 +56,10 @@ const getInfo = (e) =>{
       register(e.target.Username.value,e.target.Password.value);
       localStorage.setItem("username",e.target.Username.value);
   }
-    window.location.assign("../../index.html")
+  if (ExistsChecker == false){
+    //window.location.assign("../../index.html")
+    console.log()
+  }
 
   e.target.Username.value = '';
   e.target.Password.value = '';
