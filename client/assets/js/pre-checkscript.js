@@ -3,6 +3,7 @@ const button = document.querySelector("#Logger")
 const username = document.createElement("p1")
 username.style.display = "none"
 let display = true;
+
 const container = document.createElement("div")
 const removeLocal = () =>{
   if (confirm("Do you want to log out?") == true){

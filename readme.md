@@ -26,46 +26,32 @@ Wireframes were created to help guide the development of the app. The wireframes
 
 ## Features
 
-Home Page:
-
-![]()
+<span style="color:#428A5B;font-weight:bold">Home Page:</span>
 
 The home page of our application has been kept clean and simple, using a carousel loading data from the events page to quickly show users information about upcoming events.
 
-Login / Sign up page:
-
-![]()
+<span style="color:#428A5B;font-weight:bold">Login / Sign up page:</span>
 
 The login page follows a similar design pattern, allowing users of the application to either sign up for the first time or log back into their account to see data exclusive to them.
 
-Jobs Page:
-
-![]()
+<span style="color:#428A5B;font-weight:bold">Jobs Page:</span>
 
 Building on one of the points in the brief, this page contains a list of available jobs in the local area, as well as information about the role and a button to apply for each role.
 
-Items Page: 
-
-![]()
+<span style="color:#428A5B;font-weight:bold">Items Page:</span>
 
 Another point from the brief was around the recycling centre overflowing with potentially useable items. This page allows users of the application to browse a list of those items and inquire about their availability.
 
-Events Page:
-
-![]()
+<span style="color:#428A5B;font-weight:bold">Events Page:</span>
 
 The final point from the brief was to do with the sharing of information about skills, as well as restoring Florin to a clean environment. This page contains a list of local events such as crafting workshops, as well as events based around recycling and cleaning areas of the town.
-
-### Future Features
-
-* ...
 
 ## When opening up the application
 
 The application requires the use of node and npm. To install the application locally, clone the repository and run the following commands:
 
 * <span style="color:#428A5B;font-weight:bold">npm install</span>
-* <span style="color:#428A5B;font-weight:bold">npm install -d (to install dev dependencies)</strong>
+* <span style="color:#428A5B;font-weight:bold">npm install -d (to install dev dependencies)</span>
 
 ## To view the application in your browser
 
