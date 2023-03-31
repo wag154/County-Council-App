@@ -1,11 +1,12 @@
 const btnJob = document.getElementById("btn-job");
 const eventTitle = document.getElementById("event-title");
 const signUpForm  = document.querySelector("#disForm");
-
+ // 127.0.0.1:3000
+ //https://council-app-backend.onrender.com
 let ExistsChecker = false;
 const userLogin = async(Username,Password) =>{
   try{
-    const resp = await fetch(`https://council-app-backend.onrender.com/user/login/${Username}&${Password}`)
+    const resp = await fetch(`https://council-app-backend.onrender.com/user/login${Username}&${Password}`)
       confirm("Logged in!")
       if (resp.ok){
           const data = await resp.json();
@@ -16,31 +17,30 @@ const userLogin = async(Username,Password) =>{
       console.log("Unable to login")
   }
 }
-const register = async(username,password)=>{
+async function register(username,password){
     const data = {
         username:username,
         password:password
     }
-  const options = {
+    const options = {
       method : "POST",
       headers:{
-        Accept :"application/json",  
         "Content-Type" :"application/json"
       },
       body : JSON.stringify(data)
-  }
-  try{
+    }
+    try{
       const resp = await fetch ("https://council-app-backend.onrender.com/user/register",options);
       if (resp.ok){
         const data = await resp.json();
         if (data == "Already Exists"){
           alert("Please enter another username")
           ExistsChecker = true;
-
+           
         }
         else{
           ExistsChecker = false;
-          confirm("Successfully registered!")
+          alert("Successfully registered!")
         }
         }
   }catch{
@@ -57,15 +57,19 @@ const getInfo = (e) =>{
       register(e.target.Username.value,e.target.Password.value);
       localStorage.setItem("username",e.target.Username.value);
   }
-  if (ExistsChecker == false){
-    window.location.assign("../../index.html")
-    console.log()
-  }
-
+setTimeout(() => {
+  ExistsCheckerFunc() 
+}, 1000);
   e.target.Username.value = '';
   e.target.Password.value = '';
 }
 let login = false;
+const ExistsCheckerFunc =()=>{
+  if (ExistsChecker === false){
+    console.log("Yes")
+    window.location.assign("../../index.html")
+  }
+}
 const userSwitch = async() =>{
 
   const title = document.querySelector("#RegHeader")
