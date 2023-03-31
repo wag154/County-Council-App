@@ -8,10 +8,6 @@ const EventDesc = document.querySelector("#event-title p");
 const signUpForm  = document.querySelector(".centreDis form");
 const recyclingParent = document.querySelector("#displayTest")
 
-function goSighUp(){
-    window.location.assign("./assets/views/signup.html")
-}
-
 let login = false;
 let currentDotMenuIndex = 0;
 

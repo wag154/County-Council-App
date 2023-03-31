@@ -32,8 +32,8 @@ const DisplayUser = async()=>{
   displayNew.appendChild(container);
 }
 if (localStorage.getItem("username")){
+  console.log(localStorage.getItem("username"))
   DisplayUser()
-  button.removeEventListener("click");
 }
 else if (!localStorage.getItem("username")){
   console.log("User not signed in")
