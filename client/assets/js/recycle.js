@@ -5,35 +5,19 @@ var recycleListCount = 0;
 document.getElementsByTagName('BODY')[0].style.display = 'none';
 
 const storeLink= async(id)=>{
-if (!localStorage.getItem("username")){
-	window.location.assign("../views/sighnup.html")
-}
-try{
-	const resp = await fetch(baseURL+"/user/linkItem"+id+localStorage.getItem("username"))
-	if(resp.ok){
-		const data = await resp.json()
+	if (!localStorage.getItem("username")){
+		window.location.assign("../views/sighnup.html")
+	}
+	try{
+		const resp = await fetch(baseURL+"/user/linkItem"+id+localStorage.getItem("username"))
+		if(resp.ok){
+			const data = await resp.json()
+		}
+	}
+	catch{
+		console.log("Unable to link items")
 	}
 }
-catch{
-	console.log("Unable to link items")
-}
-}
-// const storeLink = async (id) => {
-// 	if (!localStorage.getItem('username')) {
-// 		window.location.assign('../views/sighnup.html');
-// 	}
-// 	try {
-// 		const resp = await fetch(
-// 			baseURL + '/user/linkItem' + id + localStorage.getItem('username')
-// 		);
-// 		if (resp.ok) {
-// 			const data = await resp.json();
-// 		}
-// 	} catch {
-// 		console.log('Unable to link items');
-// 	}
-// };
-
 const DisplayRecycleList = (data) => {
 
 	data.forEach((event) => {

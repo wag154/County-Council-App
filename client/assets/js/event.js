@@ -27,14 +27,12 @@ document.getElementsByTagName("BODY")[0].style.display = "none";
 const DisplayEvents = (data) => {
 	data.forEach((event) => {
 		var card = document.querySelector('.card');
-		console.log(event)
 		if (EventListCount > 0) {
 			var cardClone = card.cloneNode(true);
 			cardClone.children[0].children[0].innerHTML = event.name;
 			cardClone.children[0].children[1].innerHTML = 'Event date - ' + event.time
 			cardClone.children[0].children[2].innerHTML = 'Place - ' + event.place;
 			cardClone.children[0].children[3].innerHTML = event.description;
-
 			cardDiv.appendChild(cardClone);
 		} else {
 			EventListCount++;
@@ -42,10 +40,9 @@ const DisplayEvents = (data) => {
 			card.children[0].children[1].innerHTML = 'Event date - ' + event.time
 			card.children[0].children[2].innerHTML = 'Place - ' + event.place;
 			card.children[0].children[3].innerHTML = event.description;
-
 		}
-	});
-};
+	})
+}
 const getEvents = async () => {
 	try {
 		const resp = await fetch(baseURL + 'events');
